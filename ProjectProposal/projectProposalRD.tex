@@ -1,4 +1,3 @@
-
 %% bare_jrnl_compsoc.tex
 %% V1.4a
 %% 2014/09/17
@@ -141,7 +140,7 @@
 
 \begin{document}
 
-\title{GambleMania App\\ for UTM CSCI 352}
+\title{GambleMania\\ for UTM CSCI 352}
 %
 %
 
@@ -152,7 +151,7 @@
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-This app will allow you to play multiple standard games: 3 card, Roulette, and blackjack against a simple AI dealer. The rules for our blackjack game are as follows: the dealer must stand on 17 and blackjack pays 3:2. No actual money will be required to play this game; the money/chips will be completely virtual. However, since this game is mostly played in casinos, our target audience will be adults 18 years old and older.
+This app allows the user to play three standard casino games: blackjack, three-card poker, and roulette. The player will play against an AI dealer in the blackjack and three-card poker games. In roulette, the program will randomly generate values from the roulette wheel. None of the games in our app will not require any real money to play; all money is virtual and has no monetary value. Users will have their own accounts which will contain login information and the account's balance. This information will be managed with a database.
 \end{abstract}
 
 }
@@ -172,38 +171,33 @@ This app will allow you to play multiple standard games: 3 card, Roulette, and b
 \section{Introduction}
 
 
-For now, our project is simply called GambleMania App. It will allow you to play a typical game of blackjack against an AI dealer. The rules for our blackjack game are as follows: the dealer must stand on 17 and blackjack pays 3:2. No actual money will be required to play this game; the money/chips will be completely virtual. However, since this game is mostly played in casinos, our target audience will be adults 18 years old and older. We are making this app for a few reasons. First, we think it will be a fun project to work on. Second, this app will give people the option to play blackjack without actually gambling any real money, which is great for people who either enjoy the game or want to practice. Finally, this project is flexible in that we can add on to the project should we feel that we will finish too soon, and we could possibly even shift to a more complex game such as three-card poker and reuse a lot of code from the GambleMania app.
-
+Our project is called GambleMania. It will allow you to play the typical casino games of blackjack, three-card poker, and roulette. The player's balance will be saved in a database along with their login information. We decided to do this project because we thought it would be fun and require a good bit of research and work to finish. As for why we chose the games previously mentioned, it's because they are all fairly simple games to learn and play (probably by design). Because they are fairly simple, they should be relatively easy to program. Our target audience is adults 18 years old and older because the games featured in out app are all typically played in casinos. We expect our audience to use our app simply for fun or to practice blackjack or three-card poker. We did not include roulette in this list because roulette is based solely on randomness, so you can't really practice it.
 
 
 
 
 \subsection{Background}
-Minimally, we expect the user to know how to play blackjack. However, we could implement a tutorial as a stretch goal to remove this requirement.
+Minimally, we expect the user to know how to play blackjack, three-card poker, and roulette. However, we could implement a tutorial as a stretch goal to remove this requirement.
 
 \subsection{Impacts}
-Although our project is very small and limited, if distributed the project could possibly have a cultural impact by getting more people into the game of blackjack. It could also potentially be used for data research by simulating thousands or millions of blackjack hands.
-\subsection{Challenges}
-We forsee the most challenging part of this project as how the dealer AI is going to work. will be having a deck object with an array of 56 cards. 
-\\
-Another challenging part of this project would be creating the graphical user interface for the app should we decide to do so.
+Although our project is very small and limited, if distributed the project could possibly have a cultural impact by getting more people into the games of blackjack, three-card poker, and roulette. It could also potentially be used for data research and game theory by simulating thousands or millions of blackjack, three-card poker, and roulette games.
 
+\subsection{Challenges}
+We foresee the most challenging part of this project as the way the AI dealer will work in the blackjack and three-card poker games. These games have certain rules that need to be checked. For example, in the blackjack game, the dealer must stand on 17. In three-card poker, the player's hand must be checked against the dealer's hand. We think these kinds of obstacles will be our biggest hurdles.
 
 
 \section{Scope}
-with a implemented a main menu that can let you choose between 3 games and lets you exit the program. and have implemented the 3 games, 3 card, rouillete and blackjack.\\
-will have multiple designs for each card in the deck. 
+This project will be completed when we have implemented a navigable main menu and the games of blackjack, three-card poker, and roulette. The main menu should minimally allow the user to navigate between games by clicking a button and return to desktop by clicking an exit button. The user must be able to play an accurate game of blackjack with the rules of dealer stands on 17 and blackjack pays 3:2. The user must be able to play an accurate game of three-card poker.A fully functioning roulette table must be implemented. Finally, each of the 56 individual cards in a standard deck of playing cards must be designed.
 
-In the best case (user interface), we will be done when with this project when the user can accurately play as many blackjack hands as they want through a functional and stylish user interface.\\
+
 As mentioned earlier in this paper, there are a few stretch goals we can potentially meet should we be able to do so:\\
 
 \begin{enumerate}
-\item Create a tutorial for users who do not know how to play blackjack.
-\item Create a graphical user interface.
-\item Only if needed: switch to three-card poker.
+\item Create a tutorial for each game for users who do not know how to play.
+\item Add more games to the app.
+\item Make the main menu and game environments look better.
 \end{enumerate}
 
 
 % that's all folks
 \end{document}
-
