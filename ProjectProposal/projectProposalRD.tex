@@ -175,7 +175,6 @@ Our project is called GambleMania. It will allow you to play the typical casino 
 
 
 
-
 \subsection{Background}
 Minimally, we expect the user to know how to play blackjack, three-card poker, and roulette. However, we could implement a tutorial as a stretch goal to remove this requirement.
 
@@ -187,7 +186,7 @@ We foresee the most challenging part of this project as the way the AI dealer wi
 
 
 \section{Scope}
-This project will be completed when we have implemented a navigable main menu and the games of blackjack, three-card poker, and roulette. The main menu should minimally allow the user to navigate between games by clicking a button and return to desktop by clicking an exit button. The user must be able to play an accurate game of blackjack with the rules of dealer stands on 17 and blackjack pays 3:2. The user must be able to play an accurate game of three-card poker.A fully functioning roulette table must be implemented. Finally, each of the 56 individual cards in a standard deck of playing cards must be designed.
+This project will be completed when we have implemented a navigable main menu and the games of blackjack, three-card poker, and roulette. The main menu should minimally allow the user to navigate between games by clicking a button (one for each game) and return to desktop by clicking an exit button. The user must be able to play an accurate game of blackjack with the rules of dealer stands on 17 and blackjack pays 3:2. The user must be able to play an accurate game of three-card poker. A fully functioning roulette table must be implemented. Finally, each of the 56 individual cards in a standard deck of playing cards must be designed.
 
 
 As mentioned earlier in this paper, there are a few stretch goals we can potentially meet should we be able to do so:\\
@@ -196,7 +195,51 @@ As mentioned earlier in this paper, there are a few stretch goals we can potenti
 \item Create a tutorial for each game for users who do not know how to play.
 \item Add more games to the app.
 \item Make the main menu and game environments look better.
+\item Create a Texas Hold'em style poker game that can be played over a network connection.
 \end{enumerate}
+
+\subsection{Requirements}
+As mentioned in the Scope section, there are many basic requirements that need to be completed in order for this project to be done. There are also a few stretch goals that we could implement should we get done early. The basis of the basic requirements stems from the rules of play for each of the three basic games we will be implementing. There are also requirements that involve the UI design, some of which are simply required for a functional app and others are for a good-looking app. The stretch requirements are things that would directly make the app better, but are not required for the app to function. In the following subsections, we will describe these requirements in greater detail.
+
+\subsubsection{Functional}
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection{Non-Functional}
+\begin{itemize}
+
+\end{itemize}
+
+\subsection{Use Cases}
+This section discusses, defines, and ranks the use cases for our project. A table of use cases is shown in Table \ref{tab:useCaseIndex}.
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
+\hline \hline
+1 & Play Blackjack & User & Med & 1\\
+\hline
+2 & Play Three-Card Poker & User & Med & 1\\
+\hline
+3 & Play Roulette & User & Med & 1\\
+\hline
+4 & Watch a tutorial & User & Easy & 2\\
+\hline
+5 & Navigate the Main Menu & User & Easy & 1\\
+\hline
+6 & Exit the Program & User & Easy & 1\\
+\hline
+\end{tabular}
+\caption{Use Cases}
+\label{tab:useCaseIndex}
+\end{table}
+
+
+\subsection{Interface Mockups}
+%picture(s) of GUI here
 
 
 % that's all folks
