@@ -94,6 +94,7 @@
 %
 \ifCLASSINFOpdf
    \usepackage[pdftex]{graphicx}
+    \graphicspath{ {images/} }
  
 \else
  
@@ -203,16 +204,21 @@ As mentioned in the Scope section, there are many basic requirements that need t
 
 \subsubsection{Functional}
 \begin{itemize}
-In the main menu we will have buttons for all three games. there will also be a button to exit the program. then the three games themselves will have functions to start and maintain the game. a database to set usernames, passwords, and the users balance. In each game window, it will have an exit and back button to enter the main menu.
+\item A button that exits the program in the main menu and in each of the games.
+\item Buttons to navigate from the main menu to each of the games.
+\item A back button in each game that navigates the user back to the main menu.
+\item Game logic for each game.
+\item A Microsoft Access database that stores user login information and user balances.
 \end{itemize}
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-As a stretchgoal we will have a tutorial for each game. The visual background of the main menu and the three main games and other games.
+\item Tutorials for each game
+\item Visual/animated backgrounds for the main menu and each game.
 \end{itemize}
 
 \subsection{Use Cases}
-This section discusses, defines, and ranks the use cases for our project. A table of use cases is shown in Table \ref{tab:useCaseIndex}.
+This section defines and ranks the use cases for our project. A table of use cases is shown in Table \ref{tab:useCaseIndex}.
 
 \begin{table}
 \centering
@@ -239,8 +245,36 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 
 
 \subsection{Interface Mockups}
-%picture(s) of GUI here
 
+\begin{figure}[h]
+\caption{Login/sign-up GUI mockup}
+\includegraphics[scale=0.4]{login}
+\centering
+\end{figure}
+
+\begin{figure}[h]
+\caption{Main menu GUI mockup}
+\includegraphics[scale=0.4]{main}
+\centering
+\end{figure}
+
+\begin{figure}[h]
+\caption{Blackjack GUI mockup}
+\includegraphics[scale=0.4]{blackjack}
+\centering
+\end{figure}
+
+\begin{figure}[h]
+\caption{Three-card poker GUI mockup}
+\includegraphics[scale=0.4]{three-card}
+\centering
+\end{figure}
+
+\begin{figure}[h]
+\caption{Roulette GUI mockup}
+\includegraphics[scale=0.4]{roulette}
+\centering
+\end{figure}
 
 % that's all folks
 \end{document}
