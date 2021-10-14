@@ -226,41 +226,74 @@ This section defines and ranks the use cases for our project. A table of use cas
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-Use Case ID & Use Case Name & Game & Primary Actor & Complexity & Priority \\
+Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline \hline
-1 & Log In & N/A & User & Easy & 1\\
+1 & Log In & User & Easy & 1\\
 \hline
-2 & Sign Up & N/A & User & Med & 1\\
+2 & Sign Up & User & Med & 1\\
 \hline
-3 & Bet & Blackjack & User & Easy & 1\\
+3 & Play Blackjack & User & Easy & 1\\
 \hline
-4 & Hit/Stand & Blackjack & User & Med & 1\\
+4 & Play Three-Card Pokerr & User & Easy & 1\\
 \hline
-5 & Double Down & Blackjack & User & Easy & 1\\
+5 & Play Roulette & User & Hard & 1\\
 \hline
-6 & Split & Blackjack & User & Med & 1\\
+6 & Watch a tutorial & User & Easy & 2\\
 \hline
-7 & Ante/Pair-Plus Bet & Three-Card Poker & User & Easy & 1\\
+7 & Navigate the Main Menu & User & Easy & 1\\
 \hline
-8 & Match Ante Bet & Three-Card Poker & User & Easy & 1\\
-\hline
-9 & Fold Your Hand & Three-Card Poker & User & Med & 1\\
-\hline
-10 & Place Bets on the Table & Roulette & User & Hard & 1\\
-\hline
-11 & Spin the Wheel & Roulette & User & Easy & 1\\
-\hline
-12 & Watch a tutorial & All & User & Easy & 2\\
-\hline
-13 & Navigate the Main Menu & N/A & User & Easy & 1\\
-\hline
-14 & Exit the Program & N/A & User & Easy & 1\\
+8 & Exit the Program & User & Easy & 1\\
 \hline
 \end{tabular}
 \caption{Use Cases}
 \label{tab:useCaseIndex}
 \end{table}
 
+\subsubsection{Use Case 1: Login}
+Steps: (See Figure \ref{login})
+\begin{enumerate}
+\item User enters their username and password into the provided text fields.
+\item User clicks submit.
+\item If the username and password are found in the database, the user proceeds to the main menu. Otherwise, the user must keep entering the username and password until the username and password matches.
+\end{enumerate}
+
+\subsubsection{Use Case 2: Sign Up}
+Steps: (See Figure \ref{login})
+\begin{enumerate}
+\item User enters the username and password for their new account.
+\item User clicks submit.
+\item Account is registered to the database and the user proceeds to the main menu with the new account. The new account will have a starting balance of $1000.
+\end{enumerate}
+
+\subsubsection{Use Case 3: Play Blackjack}
+Steps: (See Figure \ref{blackjack})
+\begin{enumerate}
+\item User places an ante bet.
+\item User and dealer are dealt two randomly chosen cards. 
+\item User is shown a maximum of four options: Hit, Stand, Double Down, and Split. Double Down is only shown on the first turn. Split is only shown on the first turn when the user has two cards of the same face.
+\item If the user chooses the Hit option, they will be dealt another card.
+\item If the user chooses the Stand option, the dealer will begin their turn.
+\item If the user chooses the Double Down option, they will place a bet with the same value as the ante bet and be dealt another card. After this, the dealer's turn begins.
+\item If the user chooses the Split option, theit two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
+\item After the user's turn is over, the dealer's turn begins. The dealer uses the same options the user has.
+\item After the dealer's turn is over the user's hand and the dealer's hand are compared. The hand with the closest point value to 21 is the winner.
+\item After the game is over, the user may enter another ante bet or exit to the main menu.
+\end{enumerate}
+
+\subsubsection{Use Case 3: Play Three-Card Poker}
+Steps: (See Figure \ref{three-card})
+\begin{enumerate}
+\item User places an ante bet and optionally a pair plus bet.
+\item 
+\item User is shown a maximum of four options: Hit, Stand, Double Down, and Split. Double Down is only shown on the first turn. Split is only shown on the first turn when the user has two cards of the same face.
+\item If the user chooses the Hit option, they will be dealt another card.
+\item If the user chooses the Stand option, the dealer will begin their turn.
+\item If the user chooses the Double Down option, they will place a bet with the same value as the ante bet and be dealt another card. After this, the dealer's turn begins.
+\item If the user chooses the Split option, theit two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
+\item After the user's turn is over, the dealer's turn begins. The dealer uses the same options the user has.
+\item After the dealer's turn is over the user's hand and the dealer's hand are compared. The hand with the closest point value to 21 is the winner.
+\item After the game is over, the user may enter another ante bet or exit to the main menu.
+\end{enumerate}
 
 \subsection{Interface Mockups}
 
