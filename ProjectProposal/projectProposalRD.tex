@@ -232,15 +232,15 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline
 2 & Sign Up & User & Med & 1\\
 \hline
-3 & Play Blackjack & User & Easy & 1\\
+3 & Play Blackjack & User & Easy & 3\\
 \hline
-4 & Play Three-Card Pokerr & User & Easy & 1\\
+4 & Play Three-Card Poker & User & Easy & 4\\
 \hline
-5 & Play Roulette & User & Hard & 1\\
+5 & Play Roulette & User & Hard & 5\\
 \hline
-6 & Watch a tutorial & User & Easy & 2\\
+6 & Watch a Tutorial & User & Easy & 6\\
 \hline
-7 & Navigate the Main Menu & User & Easy & 1\\
+7 & Navigate the Main Menu & User & Easy & 2\\
 \hline
 8 & Exit the Program & User & Easy & 1\\
 \hline
@@ -249,8 +249,8 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \label{tab:useCaseIndex}
 \end{table}
 
-\subsubsection{Use Case 1: Login}
-Steps: (See Figure \ref{login})
+\subsubsection{Use Case 1: Log In}
+See Figure \ref{fig:login}
 \begin{enumerate}
 \item User enters their username and password into the provided text fields.
 \item User clicks submit.
@@ -258,41 +258,75 @@ Steps: (See Figure \ref{login})
 \end{enumerate}
 
 \subsubsection{Use Case 2: Sign Up}
-Steps: (See Figure \ref{login})
+See Figure \ref{fig:login}
 \begin{enumerate}
 \item User enters the username and password for their new account.
 \item User clicks submit.
-\item Account is registered to the database and the user proceeds to the main menu with the new account. The new account will have a starting balance of $1000.
+\item Account is registered to the database and the user proceeds to the main menu with the new account. The new account will have a starting balance of \$1000.
 \end{enumerate}
 
 \subsubsection{Use Case 3: Play Blackjack}
-Steps: (See Figure \ref{blackjack})
+See Figure \ref{fig:blackjack}
 \begin{enumerate}
 \item User places an ante bet.
 \item User and dealer are dealt two randomly chosen cards. 
 \item User is shown a maximum of four options: Hit, Stand, Double Down, and Split. Double Down is only shown on the first turn. Split is only shown on the first turn when the user has two cards of the same face.
-\item If the user chooses the Hit option, they will be dealt another card.
+\item If the user chooses the Hit option, the user will be dealt another card.
 \item If the user chooses the Stand option, the dealer will begin their turn.
-\item If the user chooses the Double Down option, they will place a bet with the same value as the ante bet and be dealt another card. After this, the dealer's turn begins.
-\item If the user chooses the Split option, theit two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
+\item If the user chooses the Double Down option, the user will place a bet with the same value as the ante bet and be dealt another card. After this, the dealer's turn begins.
+\item If the user chooses the Split option, the user's two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
 \item After the user's turn is over, the dealer's turn begins. The dealer uses the same options the user has.
 \item After the dealer's turn is over the user's hand and the dealer's hand are compared. The hand with the closest point value to 21 is the winner.
 \item After the game is over, the user may enter another ante bet or exit to the main menu.
 \end{enumerate}
 
-\subsubsection{Use Case 3: Play Three-Card Poker}
-Steps: (See Figure \ref{three-card})
+\subsubsection{Use Case 4: Play Three-Card Poker}
+See Figure \ref{fig:three-card}
 \begin{enumerate}
 \item User places an ante bet and optionally a pair plus bet.
-\item 
-\item User is shown a maximum of four options: Hit, Stand, Double Down, and Split. Double Down is only shown on the first turn. Split is only shown on the first turn when the user has two cards of the same face.
-\item If the user chooses the Hit option, they will be dealt another card.
-\item If the user chooses the Stand option, the dealer will begin their turn.
-\item If the user chooses the Double Down option, they will place a bet with the same value as the ante bet and be dealt another card. After this, the dealer's turn begins.
-\item If the user chooses the Split option, theit two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
-\item After the user's turn is over, the dealer's turn begins. The dealer uses the same options the user has.
-\item After the dealer's turn is over the user's hand and the dealer's hand are compared. The hand with the closest point value to 21 is the winner.
-\item After the game is over, the user may enter another ante bet or exit to the main menu.
+\item User and dealer are dealt three cards.
+\item User is shown two options: Play and Fold.
+\item If the user chooses the Play option, the user will make a bet that has the same value as the ante bet. After this, the user's turn will be over.
+\item If the user chooses the Fold option, the user will cede their hand to the dealer and lose automatically.
+\item After the user's turn is over, the dealer's turn begins. The dealer will reveal their cards and compare its hand with the user's.
+\item If the dealer's hand is not better than Queen high or the user's hand is better, the user wins. Otherwise, if the dealer has the better hand, the dealer wins.
+\item After the game is over, the user may enter another ante bet/pair plus bet or exit to the main menu.
+\end{enumerate}
+
+\subsubsection{Use Case 5: Play Roulette}
+See Figure \ref{fig:roulette}
+\begin{enumerate}
+\item User places a bet of their choice on any valid space on the board.
+\item Once the user is done betting, the user may click the ``Spin" button to spin the wheel.
+\item Once the ball in the roulette wheel rests in a slot, that slot determines what values win.
+\item The user is paid out according to what bet they made and where the ball landed.
+\item The user may choose to place another bet or exit to the main menu once the payout - or lack thereof - is done.
+\end{enumerate}
+
+\subsubsection{Use Case 6: Watch a Tutorial}
+
+\begin{enumerate}
+\item In the main menu, the user may click the button labeled ``Watch a Tutorial."
+\item Once in the tutorial screen, the user may select any of the tutorials associated with the three games in the app.
+\item Once the user clicks on a tutorial, they will be shown a video that teaches the user how to play the game.
+\item Once the user is done watching the tutorial, they may go back to the tutorials screen.
+\item From the tutorials screen, the user may choose to watch another tutorial or exit to the main menu.
+\end{enumerate}
+
+\subsubsection{Use Case 7: Navigate the Main Menu}
+See Figure \ref{fig:main}
+\begin{enumerate}
+\item The user can click the ``Blackjack" button to go to the blackjack game screen.
+\item The user can click the ``Three-Card Poker" button to go to the three-card poker game screen.
+\item The user can click the ``Roulette" button to go to the roulette game screen.
+\item The user can click the ``Log Out" button to log out of their account and go back to the log in/sign up screen.
+\item The user can click the ``X" button at the top right corner of the screen to exit the program.
+\end{enumerate}
+
+\subsubsection{Use Case 8: Exit the Program}
+See Figure \ref{fig:main}
+\begin{enumerate}
+\item The user can click the ``X" button at the top right corner of the main menu screen to exit the program.
 \end{enumerate}
 
 \subsection{Interface Mockups}
@@ -300,30 +334,35 @@ Steps: (See Figure \ref{three-card})
 \begin{figure}[h]
 \caption{Login/sign-up GUI mockup}
 \includegraphics[scale=0.4]{login}
+\label{fig:login}
 \centering
 \end{figure}
 
 \begin{figure}[h]
 \caption{Main menu GUI mockup}
 \includegraphics[scale=0.4]{main}
+\label{fig:main}
 \centering
 \end{figure}
 
 \begin{figure}[h]
 \caption{Blackjack GUI mockup}
 \includegraphics[scale=0.4]{blackjack}
+\label{fig:blackjack}
 \centering
 \end{figure}
 
 \begin{figure}[h]
 \caption{Three-card poker GUI mockup}
 \includegraphics[scale=0.4]{three-card}
+\label{fig:three-card}
 \centering
 \end{figure}
 
 \begin{figure}[h]
 \caption{Roulette GUI mockup}
 \includegraphics[scale=0.4]{roulette}
+\label{fig:roulette}
 \centering
 \end{figure}
 
