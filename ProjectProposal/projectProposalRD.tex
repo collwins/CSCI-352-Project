@@ -329,6 +329,7 @@ See Figure \ref{fig:main}
 \item The user can click the ``X" button at the top right corner of the main menu screen to exit the program.
 \end{enumerate}
 
+\newpage
 \subsection{Interface Mockups}
 
 \begin{figure}[h]
@@ -345,12 +346,16 @@ See Figure \ref{fig:main}
 \centering
 \end{figure}
 
+\newpage
+
 \begin{figure}[h]
 \caption{Blackjack GUI mockup}
 \includegraphics[scale=0.4]{blackjack}
 \label{fig:blackjack}
 \centering
 \end{figure}
+
+\newpage
 
 \begin{figure}[h]
 \caption{Three-card poker GUI mockup}
@@ -365,6 +370,47 @@ See Figure \ref{fig:main}
 \label{fig:roulette}
 \centering
 \end{figure}
+
+\newpage
+
+\section{Timeline}
+This section describes the timeline of our project.\\
+\newline
+8/27 - Finding partners.\\
+9/2 - Formed a team.\\
+9/9 - Created a rough draft of the project proposal.\\
+9/16 - Designed a plan of action for the project.\\
+9/23 - Worked on the GUI mockups and the Requirements and Use Cases sections of the project proposal.\\
+9/30 - Updated the GUI mockups.\\
+10/7 - Researched potential design patterns for the project.\\
+10/14 - Modified the Use Cases section of the project proposal.\\
+10/21 - Midterms\\
+10/28 - Added the Timeline and Project Structure \& UML Outline sections. Begin implementing the login/sign-up screen and database.\\
+11/4 - Begin work on blackjack and three-card poker. Login/sign-up should be done by this point.\\
+11/11 - We should be about halfway done with blackjack and three-card poker by this point.\\
+11/18 - Begin work on roulette. Blackjack and three-card poker should be done by this point.\\
+11/25 - Begin work on the presentation and work on stretch goals such as the tutorials.\\
+12/2 - Demo the project. The project should be finished by this point.\\
+
+\section{Project Structure \& UML Outline}
+
+\begin{figure}[h]
+\caption{UML Outline}
+\includegraphics[scale=0.4]{GameDesign}
+\label{fig:outline}
+\centering
+\end{figure}
+
+\noindent
+This section covers the overall project structure and provides a UML outline of the project (see Figure \ref{fig:outline}).\\
+\newline
+The project's structure hinges on a NavigationWindow object. A NavigationWindow allows easy navigation between pages in a WPF app. Initially, our project will contain five pages, but more could be added depending on how much time we have left by December 2. The initial five pages are named Login/Sign-Up, Roulette, Main Menu, Blackjack, and Three-Card Poker. Each page will contain Label and Button objects. The game pages will also contain their respective game classes.\\
+\newline
+Each game class contains the GetBalance and UpdateBalance methods and depends on a card struct. As the names imply, these methods get and modify the user's balance in the database. The card struct defines the three attributes of a card: value, suit, and display (or face). Roulette has its own unique game class called RouletteGame. This class has two unique methods: Spin and PlaceBet. The Spin method will play an animation of the roulette wheel spinning and determine whether the user wins or loses. PlaceBet determines what bet the user made for which slot on the board and calls UpdateBalance accordingly.\\
+\newline
+The Blackjack page contains the BlackjackGame class, which inherits from an abstract CardGame class like the Three-Card class. The CardGame class contains two unique methods: Deal and ChangeWinState. Deal simply deals out cards to the player and dealer. ChangeWinState updates the win state depending on if the player wins or loses. The BlackjackGame class has several unique methods: Hit, Stand, DoubleDown, Split, Bust, and Blackjack. Hit, Stand, DoubleDown, and Split are all actions that the user can take on their turn. Bust is called if either the player or dealer has a point value of over 21. Blackjack is called if either the player or dealer has a point value of 21 on the first turn.\\
+\newline
+Finally, the Three-Card class also has several unique methods: AnteBet, PairPlusBet, Fold, PlayHand, DealerRevealHand, and CompareHands. AnteBet, PairPlusBet, Fold, and PlayHand are all actions that the user can take on their turn. DealerRevealHand is called after the user is finished with their turn, and reveals the dealer's hand to the user. CompareHands is called after the dealer reveals their hand, and determines which hand is better: the user's or the dealer's.
 
 % that's all folks
 \end{document}
