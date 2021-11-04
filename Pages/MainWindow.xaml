@@ -1,0 +1,14 @@
+﻿<Window x:Class="Main_Menu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main_Menu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="log_in" Content="log In" Width="90" Height="70" Click="log_in_Click"/>
+        <Frame x:Name="Main" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Navigated="Main_Navigated"/>
+    </Grid>
+
+</Window>
