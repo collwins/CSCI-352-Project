@@ -64,6 +64,11 @@
     <Compile Include="MainMenu_Page.xaml.cs">
       <DependentUpon>MainMenu_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="projectDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Roulette_page.xaml.cs">
       <DependentUpon>Roulette_page.xaml</DependentUpon>
     </Compile>
@@ -121,6 +126,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="projectDBDataSet.xsc">
+      <DependentUpon>projectDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="projectDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="projectDBDataSet.xss">
+      <DependentUpon>projectDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,6 +144,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="projectDB.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

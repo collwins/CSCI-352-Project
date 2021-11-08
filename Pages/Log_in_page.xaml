@@ -6,20 +6,30 @@
       xmlns:local="clr-namespace:Main_Menu"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Log_in_page">
+      Title="Log_in_page" Width="800" Height="500" MinWidth="800" MinHeight="500">
 
-    <Grid Background="White">
+    <Grid Background="White" Margin="0,0,0,10" Width="800" MinWidth="800" MinHeight="450">
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="289" Margin="440,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="319"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="289" Margin="46,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="319"/>
         <Label Content="&#x9;&#x9;WELCOME TO GAMBLEMANIA!" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Black" Margin="97,18,94,0" Height="40" Width="609" FontSize="20" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-        <Label Content="&#x9;&#x9;&#x9;Please log in or sign up." VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Black" Margin="115,63,94,0" Height="40" Width="591" FontSize="16" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Margin="115.416,116.737,401.584,53.263" Height="280" Width="283" FontSize="16" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" UseLayoutRounding="False" BorderBrush="Black" BorderThickness="2" />
-        <Label Content="&#x9;         Sign Up" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Margin="422.579,116.737,94.421,53.263" Height="280" Width="283" FontSize="16" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" UseLayoutRounding="False" BorderBrush="Black" BorderThickness="2" />
         <Label HorizontalAlignment="Left" Margin="134,164,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
-        <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="440,164,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
-        <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="134,164,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
-        <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="134,205,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
-        <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="440,205,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
-        <Label Content="CONFIRM&#xD;&#xA;PASSWORD:" HorizontalAlignment="Left" Margin="440,246,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="56" FontWeight="Bold" FontSize="14"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="202,287,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Foreground="Black" Background="White"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="525,307,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Foreground="Black" Background="White"/>
+        <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="440,174,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
+        <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="46,174,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
+        <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="46,226,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="36" FontWeight="Bold" FontSize="14"/>
+        <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="440,229,0,0" VerticalAlignment="Top" Width="111" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="33" FontWeight="Bold" FontSize="14"/>
+        <Label Content="CONFIRM&#xA;PASSWORD:" HorizontalAlignment="Left" Margin="440,282,0,0" VerticalAlignment="Top" Width="102" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="56" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="login_submit_button" Content="Submit" HorizontalAlignment="Left" Margin="169,350,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Foreground="Black" Background="White" Click="LoginSubmit_Click"/>
+        <Button x:Name="sign_up_submit_button" Content="Submit" HorizontalAlignment="Left" Margin="567,350,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Foreground="Black" Background="White" Click="SignUpSubmit_Click"/>
+        <TextBox x:Name="login_username_entry" HorizontalAlignment="Left" Height="24" Margin="146,176,0,0" Text="enter username here..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
+        <TextBox x:Name="login_pass_entry" HorizontalAlignment="Left" Height="24" Margin="146,230,0,0" Text="enter password here..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
+        <TextBox x:Name="sign_up_username_entry" HorizontalAlignment="Left" Height="24" Margin="542,176,0,0" Text="enter username here..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
+        <TextBox x:Name="sign_up_pass_entry" HorizontalAlignment="Left" Height="24" Margin="542,232,0,0" Text="enter password here..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
+        <TextBox x:Name="confirm_pass_entry" HorizontalAlignment="Left" Height="24" Margin="542,291,0,0" Text="enter password again..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
+        <Label x:Name="login_label" Content="Log In" HorizontalAlignment="Left" Margin="173,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.537,-0.15" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="sign_up_label" Content="Sign Up" HorizontalAlignment="Left" Margin="563,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.537,-0.15" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Passwords must be at least 10 characters including at least one number, uppercase letter, and symbol." HorizontalAlignment="Left" Margin="38,433,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Margin="0, 35, 0, 0" />
+        <Label x:Name="sign_up_error_label" Content="" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="440,143,41,0" VerticalAlignment="Top" Width="319" FontWeight="Bold"/>
+        <Label x:Name="login_error_label" Content="" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="46,133,435,0" VerticalAlignment="Top" Width="319" FontWeight="Bold" />
     </Grid>
 </Page>

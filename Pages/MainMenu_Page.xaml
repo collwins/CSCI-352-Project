@@ -9,6 +9,8 @@
       Title="MainMenu_Page">
 
     <Grid>
+
+        <Label Content="MAIN MENU" FontSize="24"></Label>
         
     </Grid>
 </Page>
