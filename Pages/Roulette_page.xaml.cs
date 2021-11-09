@@ -24,5 +24,15 @@ namespace Main_Menu
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Num_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }
