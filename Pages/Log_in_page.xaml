@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Log_in_page" Width="800" Height="500" MinWidth="800" MinHeight="500">
 
-    <Grid Background="White" Margin="0,0,0,10" Width="800" MinWidth="800" MinHeight="450">
+    <Grid Background="White" Margin="0,0,0,48" Width="800" MinWidth="800" MinHeight="450">
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="289" Margin="440,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="319"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="289" Margin="46,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="319"/>
         <Label Content="&#x9;&#x9;WELCOME TO GAMBLEMANIA!" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Black" Margin="97,18,94,0" Height="40" Width="609" FontSize="20" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
@@ -27,8 +27,8 @@
         <TextBox x:Name="confirm_pass_entry" HorizontalAlignment="Left" Height="24" Margin="542,291,0,0" Text="enter password again..." VerticalAlignment="Top" Width="203" MaxLines="1" MaxLength="29"/>
         <Label x:Name="login_label" Content="Log In" HorizontalAlignment="Left" Margin="173,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.537,-0.15" FontSize="20" FontWeight="Bold"/>
         <Label x:Name="sign_up_label" Content="Sign Up" HorizontalAlignment="Left" Margin="563,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.537,-0.15" FontSize="20" FontWeight="Bold"/>
-        <Label Content="Passwords must be at least 10 characters including at least one number, uppercase letter, and symbol." HorizontalAlignment="Left" Margin="38,433,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
-        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Margin="0, 35, 0, 0" />
+        <Label Content="Passwords must be at least 10 characters including at least one number, uppercase letter, and symbol." HorizontalAlignment="Left" Margin="46,412,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" />
         <Label x:Name="sign_up_error_label" Content="" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="440,143,41,0" VerticalAlignment="Top" Width="319" FontWeight="Bold"/>
         <Label x:Name="login_error_label" Content="" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="46,133,435,0" VerticalAlignment="Top" Width="319" FontWeight="Bold" />
     </Grid>

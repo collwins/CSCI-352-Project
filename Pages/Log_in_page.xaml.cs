@@ -82,7 +82,7 @@ namespace Main_Menu
             if (found == 1)
             {
                 MessageBox.Show("Logged in!");
-                parentFrame.Content = new MainMenu_Page();
+                parentFrame.Content = new MainMenu_Page(parentFrame);
             }
             else
             {
@@ -196,7 +196,7 @@ namespace Main_Menu
 
                             //Load Main Menu Page
                             //TODO: Pass user info to MainMenu_Page
-                            parentFrame.Content = new MainMenu_Page();
+                            parentFrame.Content = new MainMenu_Page(parentFrame);
                         }
                         else
                         {
@@ -209,5 +209,9 @@ namespace Main_Menu
             
         }
 
+        private void PageContent_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }

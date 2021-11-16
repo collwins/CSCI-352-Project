@@ -20,9 +20,15 @@ namespace Main_Menu
     /// </summary>
     public partial class Roulette_page : Page
     {
+        Frame parentFrame;
         public Roulette_page()
         {
             InitializeComponent();
+        }
+        public Roulette_page(Frame parentFrame)
+        {
+            InitializeComponent();
+            this.parentFrame = parentFrame;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

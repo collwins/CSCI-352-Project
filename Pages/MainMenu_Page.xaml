@@ -9,20 +9,15 @@
       Title="MainMenu_Page">
 
     <Grid Background="White" Width="800" Height="450">
-        <Label Content="GambleMania" HorizontalAlignment="Center" Margin="275,70,276,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" Width="249"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"/>
+        <Label Content="GambleMania" HorizontalAlignment="Center" Margin="234,69,229,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="50" Width="337"/>
         <Button Content="LOG OUT
                 " HorizontalAlignment="Left" Margin="22,18,0,0" VerticalAlignment="Top" Width="86" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="33" FontSize="18"/>
-        <Label Content="Please select a game below to play." HorizontalAlignment="Left" Margin="275,148,0,0" VerticalAlignment="Top" Width="244" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Welcome," HorizontalAlignment="Left" Margin="323,128,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14"/>
-        <Button Content="BLACKJACK" HorizontalAlignment="Left" Margin="32,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18"/>
-        <Button Content="THREE-CARD&#xD;&#xA;      POKER" HorizontalAlignment="Left" Margin="292,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18"/>
-        <Button Content="ROULETTE" HorizontalAlignment="Left" Margin="547,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18"/>
-        <Ellipse HorizontalAlignment="Left" Height="52" Margin="715,18,0,0" Stroke="Black" VerticalAlignment="Top" Width="52"/>
-        <Button Content="Quit" HorizontalAlignment="Left" Margin="715,18,0,0" VerticalAlignment="Top" Width="52" BorderBrush="{x:Null}" RenderTransformOrigin="0.767,0.947" Height="52" Foreground="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="RED_X.png"/>
-            </Button.Background>
-        </Button>
+        <Label Content="Please select a game below to play." HorizontalAlignment="Left" Margin="278,162,0,0" VerticalAlignment="Top" Width="244" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Welcome," HorizontalAlignment="Left" Margin="319,142,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="Black_Jack_Button" Content="BLACKJACK" HorizontalAlignment="Left" Margin="32,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Black_Jack_Button_Click"/>
+        <Button x:Name="Three_Card_Poker_Game" Content="THREE-CARD&#xD;&#xA;      POKER" HorizontalAlignment="Left" Margin="294,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Three_Card_Poker_Game_Click"/>
+        <Button x:Name="Roulette_Game" Content="ROULETTE" HorizontalAlignment="Left" Margin="563,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Roulette_Game_Click"/>
 
     </Grid>
 </Page>

@@ -9,12 +9,9 @@
       Title="Blackjack_Page">
 
     <Grid Background="White">
-        <Button Content="X" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Width="62" BorderBrush="Black" Height="39">
-            <Button.Background>
-                <ImageBrush ImageSource="BACK_ARROW.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="HIT" HorizontalAlignment="Left" Margin="46,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" />
+        <Button Content="X" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Width="62" BorderBrush="Black" Height="39"></Button>
+        <Button x:Name="hit_btn" Content="HIT" HorizontalAlignment="Left" Margin="46,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2" Click="hit_btn_Click"/>
         <Button Content="DOUBLE&#xD;&#xA;DOWN" HorizontalAlignment="Left" Margin="154,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="20" FontWeight="Bold" BorderThickness="2"/>
         <Button Content="STAND" HorizontalAlignment="Left" Margin="265,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>
         <Button Content="SPLIT" HorizontalAlignment="Left" Margin="377,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>

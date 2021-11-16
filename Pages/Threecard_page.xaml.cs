@@ -20,9 +20,15 @@ namespace Main_Menu
     /// </summary>
     public partial class Threecard_page : Page
     {
+        Frame parentFrame;
         public Threecard_page()
         {
             InitializeComponent();
+        }
+        public Threecard_page(Frame parentFrame)
+        {
+            InitializeComponent();
+            this.parentFrame = parentFrame;
         }
     }
 }
