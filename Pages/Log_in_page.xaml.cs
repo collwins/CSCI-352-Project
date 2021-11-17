@@ -183,14 +183,21 @@ namespace Main_Menu
                             {
                                 data += read[0].ToString(); //read[0] = number of users in db
                             }
-
+                            cn.Close();
                             int newID = Convert.ToInt32(data) + 1;
 
                             //Send to db
-                            string insertQuery = "INSERT INTO Users VALUES('" + newID.ToString() + "','" + 5000.ToString() + "','" + hexUser.ToString() + "','" + hexPass.ToString() + "')";
 
-                            cmd = new OleDbCommand(insertQuery, cn);
-                            cmd.ExecuteNonQuery();
+                            OleDbCommand cmd2 = new OleDbCommand();
+                            cmd2.CommandType = System.Data.CommandType.Text;
+                            cmd2.CommandText = "INSERT INTO Users ([UserID],[Balance],[Username],[Password]) VALUES (?,?,?,?)";
+                            cmd2.Parameters.AddWithValue("@id", newID.ToString());
+                            cmd2.Parameters.AddWithValue("@balance", 5000.ToString());
+                            cmd2.Parameters.AddWithValue("@username", hexUser.ToString());
+                            cmd2.Parameters.AddWithValue("@password", hexPass.ToString());
+                            cmd2.Connection = cn;
+                            cn.Open();
+                            cmd2.ExecuteNonQuery();
                             cn.Close();
                             MessageBox.Show("User added!");
 
@@ -207,11 +214,6 @@ namespace Main_Menu
             
             
             
-        }
-
-        private void PageContent_Navigated(object sender, NavigationEventArgs e)
-        {
-
         }
     }
 }
