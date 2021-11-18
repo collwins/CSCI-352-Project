@@ -21,22 +21,30 @@ namespace Main_Menu
     public partial class Blackjack_Page : Page
     {
         Frame parentFrame;
+        int uid;
+        string username;
+        int balance;
         public Blackjack_Page()
         {
-            InitializeComponent();
+            parentFrame = null;
+            uid = -1;
+            username = "";
+            balance = -1;
             hit_btn.Opacity = 0;
             hit_btn.IsEnabled = false;
-        }
-        public Blackjack_Page(Frame parentFrame)
-        {
+            balance_label.Content = $"BALANCE: {balance}";
             InitializeComponent();
-            this.parentFrame = parentFrame;
         }
-
-        private void PageContent_Navigated(object sender, NavigationEventArgs e)
+        public Blackjack_Page(Frame parentFrame, int uid, string username, int balance)
         {
-
+            this.parentFrame = parentFrame;
+            this.uid = uid;
+            this.username = username;
+            this.balance = balance;
+            balance_label.Content = $"BALANCE: ${this.balance}";
+            InitializeComponent();
         }
+
 
         private void hit_btn_Click(object sender, RoutedEventArgs e)
         {

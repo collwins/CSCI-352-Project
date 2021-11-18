@@ -35,7 +35,7 @@ namespace Main_Menu
 
         private void LoginSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string getUserCountQuery = "SELECT Username, [Password] FROM Users;";
+            string getUserCountQuery = "SELECT Username, [Password] FROM Users;"; //optimization: use WHERE to select a specific user
             string user = login_username_entry.Text;
             string pass = login_pass_entry.Text;
 
@@ -57,7 +57,7 @@ namespace Main_Menu
             {
                 data += read[0].ToString() + " " + read[1].ToString() + " "; //read[0] = username, read[1] = password
             }
-
+            read.Close();
 
             int i = 0;
             int found = 0;
@@ -81,8 +81,22 @@ namespace Main_Menu
 
             if (found == 1)
             {
+                //get userID from db
+                string getUserID = $"SELECT UserID, Balance FROM Users WHERE (Username) = {user}";
+                OleDbCommand cmd2 = new OleDbCommand(getUserID, cn);
+                OleDbDataReader read2 = cmd2.ExecuteReader();
+                string uidData = "";
+
+                while (read2.Read())
+                {
+                    uidData += read[0].ToString() + " " + read[1].ToString(); //read[0] = user id, read[1] = balance
+                }
+                read2.Close();
+                int index = uidData.IndexOf(" ");
+                int uid = Convert.ToInt32(uidData.Substring(0, index));
+                int balance = Convert.ToInt32(uidData.Substring(index + 1));
                 MessageBox.Show("Logged in!");
-                parentFrame.Content = new MainMenu_Page(parentFrame);
+                parentFrame.Content = new MainMenu_Page(parentFrame, uid, user, balance);
             }
             else
             {
@@ -201,9 +215,9 @@ namespace Main_Menu
                             cn.Close();
                             MessageBox.Show("User added!");
 
-                            //Load Main Menu Page
-                            //TODO: Pass user info to MainMenu_Page
-                            parentFrame.Content = new MainMenu_Page(parentFrame);
+
+                        //Load Main Menu Page
+                        parentFrame.Content = new MainMenu_Page(parentFrame, newID, user, 5000);
                         }
                         else
                         {

@@ -9,15 +9,16 @@
       Title="MainMenu_Page">
 
     <Grid Background="White" Width="800" Height="450">
-        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden"/>
         <Label Content="GambleMania" HorizontalAlignment="Center" Margin="234,69,229,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="50" Width="337"/>
         <Button Content="LOG OUT
                 " HorizontalAlignment="Left" Margin="22,18,0,0" VerticalAlignment="Top" Width="86" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="33" FontSize="18"/>
         <Label Content="Please select a game below to play." HorizontalAlignment="Left" Margin="278,162,0,0" VerticalAlignment="Top" Width="244" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Welcome," HorizontalAlignment="Left" Margin="319,142,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="welcome_msg" Content="Welcome," HorizontalAlignment="Left" Margin="319,142,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14"/>
         <Button x:Name="Black_Jack_Button" Content="BLACKJACK" HorizontalAlignment="Left" Margin="32,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Black_Jack_Button_Click"/>
         <Button x:Name="Three_Card_Poker_Game" Content="THREE-CARD&#xD;&#xA;      POKER" HorizontalAlignment="Left" Margin="294,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Three_Card_Poker_Game_Click"/>
         <Button x:Name="Roulette_Game" Content="ROULETTE" HorizontalAlignment="Left" Margin="563,323,0,0" VerticalAlignment="Top" Width="207" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="76" FontSize="18" Click="Roulette_Game_Click"/>
+        <Label x:Name="balance_label" Content="BALANCE: $" HorizontalAlignment="Left" Margin="557,18,0,0" VerticalAlignment="Top" Width="223" FontWeight="Bold" FontSize="18" Height="40" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
 
     </Grid>
 </Page>
