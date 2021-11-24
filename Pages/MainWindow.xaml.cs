@@ -27,7 +27,6 @@ namespace Main_Menu
         private void log_in_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Log_in_page(Main);
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
