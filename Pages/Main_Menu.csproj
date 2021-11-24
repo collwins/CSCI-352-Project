@@ -64,6 +64,9 @@
     <Compile Include="MainMenu_Page.xaml.cs">
       <DependentUpon>MainMenu_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="projectDBDataSet.cs">
+      <DependentUpon>projectDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="projectDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,7 +151,7 @@
   <ItemGroup>
     <Resource Include="BACK_ARROW.png" />
     <Content Include="projectDB.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="RED X.png" />
   </ItemGroup>

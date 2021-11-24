@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Pages"
   ],
-  "SelectedNode": "\\Main_Menu.sln",
+  "SelectedNode": "\\Pages\\Log_in_page.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -21,11 +21,20 @@ namespace Main_Menu
     public partial class MainMenu_Page : Page
     {
         Frame parentFrame;
+        int uid = -1;
+        string username = "";
+        int balance = -1;
         
-        public MainMenu_Page(Frame frame)
+        public MainMenu_Page(Frame frame, int userID, string username, int balance)
         {
             parentFrame = frame;
+            uid = userID;
+            this.username = username;
+            this.balance = balance;
+            welcome_msg.Content = $"Welcome, {username}.";
+            balance_label.Content = $"Balance: {balance}";
             InitializeComponent();
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,23 +49,19 @@ namespace Main_Menu
 
         private void Black_Jack_Button_Click(object sender, RoutedEventArgs e)
         {
-            parentFrame.Content = new Blackjack_Page();
+            parentFrame.Content = new Blackjack_Page(parentFrame, uid, username, balance);
         }
 
         private void Three_Card_Poker_Game_Click(object sender, RoutedEventArgs e)
         {
-            parentFrame.Content = new Threecard_page(PageContent);
+            parentFrame.Content = new Threecard_page();
         }
 
         private void Roulette_Game_Click(object sender, RoutedEventArgs e)
         {
-            parentFrame.Content = new Roulette_page(PageContent);
+            parentFrame.Content = new Roulette_page();
             
         }
 
-        private void PageContent_Navigated(object sender, NavigationEventArgs e)
-        {
-            PageContent.Content = new Blackjack_Page();
-        }
     }
 }
