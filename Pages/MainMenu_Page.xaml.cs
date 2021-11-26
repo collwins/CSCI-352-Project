@@ -31,25 +31,15 @@ namespace Main_Menu
             uid = userID;
             this.username = username;
             this.balance = balance;
-            welcome_msg.Content = $"Welcome, {username}.";
-            balance_label.Content = $"Balance: {balance}";
             InitializeComponent();
-           
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BJG(object sender, RoutedEventArgs e)
-        {
+            welcome_msg.Content = $"Welcome, {username}.";
+            balance_label.Content = $"Balance: ${balance}";
 
         }
 
         private void Black_Jack_Button_Click(object sender, RoutedEventArgs e)
         {
-            parentFrame.Content = new Blackjack_Page(parentFrame, uid, username, balance);
+            parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
         }
 
         private void Three_Card_Poker_Game_Click(object sender, RoutedEventArgs e)
@@ -63,5 +53,9 @@ namespace Main_Menu
             
         }
 
+        private void log_out_btn_Click(object sender, RoutedEventArgs e)
+        {
+            parentFrame.Content = new Log_in_page(parentFrame);
+        }
     }
 }

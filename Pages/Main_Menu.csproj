@@ -64,6 +64,9 @@
     <Compile Include="MainMenu_Page.xaml.cs">
       <DependentUpon>MainMenu_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bet_Page.xaml.cs">
+      <DependentUpon>Bet_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="projectDBDataSet.cs">
       <DependentUpon>projectDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Bet_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Roulette_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

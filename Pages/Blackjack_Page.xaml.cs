@@ -22,27 +22,18 @@ namespace Main_Menu
     {
         Frame parentFrame;
         int uid;
-        string username;
         int balance;
-        public Blackjack_Page()
-        {
-            parentFrame = null;
-            uid = -1;
-            username = "";
-            balance = -1;
-            hit_btn.Opacity = 0;
-            hit_btn.IsEnabled = false;
-            balance_label.Content = $"BALANCE: {balance}";
-            InitializeComponent();
-        }
-        public Blackjack_Page(Frame parentFrame, int uid, string username, int balance)
+        int bet;
+   
+        public Blackjack_Page(Frame parentFrame, int uid, int balance, int bet)
         {
             this.parentFrame = parentFrame;
             this.uid = uid;
-            this.username = username;
             this.balance = balance;
-            balance_label.Content = $"BALANCE: ${this.balance}";
+            this.bet = bet;
             InitializeComponent();
+            balance_label.Content = $"BALANCE: ${this.balance}";
+            bet_label.Content = $"BET: ${this.bet}";
         }
 
 

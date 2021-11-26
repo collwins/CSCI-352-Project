@@ -17,7 +17,7 @@
         <Button Content="SPLIT" HorizontalAlignment="Left" Margin="377,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>
         <Label Content="DEALER'S HAND" HorizontalAlignment="Left" Margin="46,105,0,0" VerticalAlignment="Top" Width="129" FontWeight="Bold" FontSize="14"/>
         <Label Content="YOUR HAND" HorizontalAlignment="Left" Margin="46,325,0,0" VerticalAlignment="Top" Width="129" FontWeight="Bold" FontSize="14"/>
-        <Label Content="YOUR BET: $" HorizontalAlignment="Left" Margin="496,195,0,0" VerticalAlignment="Top" Width="277" FontWeight="Bold" FontSize="24" Height="57" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
+        <Label x:Name="bet_label" Content="BET: $" HorizontalAlignment="Left" Margin="496,195,0,0" VerticalAlignment="Top" Width="277" FontWeight="Bold" FontSize="24" Height="57" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
         <Label x:Name="balance_label" Content="BALANCE: $" HorizontalAlignment="Left" Margin="550,32,0,0" VerticalAlignment="Top" Width="223" FontWeight="Bold" FontSize="18" Height="40" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
     </Grid>
 </Page>

@@ -58,6 +58,7 @@ namespace Main_Menu
                 data += read[0].ToString() + " " + read[1].ToString() + " "; //read[0] = username, read[1] = password
             }
             read.Close();
+            cn.Close();
 
             int i = 0;
             int found = 0;
@@ -82,16 +83,17 @@ namespace Main_Menu
             if (found == 1)
             {
                 //get userID from db
-                string getUserID = $"SELECT UserID, Balance FROM Users WHERE (Username) = {user}";
+                string getUserID = $"SELECT UserID, Balance FROM Users WHERE (Username) = '{hexUser}'";
                 OleDbCommand cmd2 = new OleDbCommand(getUserID, cn);
+                cn.Open();
                 OleDbDataReader read2 = cmd2.ExecuteReader();
                 string uidData = "";
-
                 while (read2.Read())
                 {
-                    uidData += read[0].ToString() + " " + read[1].ToString(); //read[0] = user id, read[1] = balance
+                    uidData += read2[0].ToString() + " " + read2[1].ToString(); //read2[0] = user id, read2[1] = balance
                 }
                 read2.Close();
+                cn.Close();
                 int index = uidData.IndexOf(" ");
                 int uid = Convert.ToInt32(uidData.Substring(0, index));
                 int balance = Convert.ToInt32(uidData.Substring(index + 1));
@@ -102,7 +104,6 @@ namespace Main_Menu
             {
                 login_error_label.Content = "Incorrect username or password.";
             }
-            cn.Close();
         }
 
         private void SignUpSubmit_Click(object sender, RoutedEventArgs e)
