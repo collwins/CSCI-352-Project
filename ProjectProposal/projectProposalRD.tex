@@ -213,7 +213,7 @@ As mentioned in the Scope section, there are many basic requirements that need t
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-\item User login data and balance is hashed.
+\item User login data is hashed.
 \item The app should be responsive and perform well without any major dips in framerate.
 \item When the user's balance is modified, it should be updated in the database as soon as possible.
 \item The app should be flexible enough so that it is possible to scale it up in the future.
@@ -232,17 +232,11 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline
 2 & Sign Up & User & Med & 1\\
 \hline
-3 & Play Blackjack & User & Easy & 3\\
+3 & Play Blackjack & User & Hard & 3\\
 \hline
-4 & Play Three-Card Poker & User & Easy & 4\\
+4 & Navigate the Main Menu & User & Easy & 2\\
 \hline
-5 & Play Roulette & User & Hard & 5\\
-\hline
-6 & Watch a Tutorial & User & Easy & 6\\
-\hline
-7 & Navigate the Main Menu & User & Easy & 2\\
-\hline
-8 & Exit the Program & User & Easy & 1\\
+5 & Exit the Program & User & Easy & 4\\
 \hline
 \end{tabular}
 \caption{Use Cases}
@@ -277,53 +271,19 @@ See Figure \ref{fig:blackjack}
 \item If the user chooses the Split option, the user's two cards will be split into separate hands. Each hand will be dealt another card, giving the user two hands with two cards each. The user can play each hand separately.
 \item After the user's turn is over, the dealer's turn begins. The dealer uses the same options the user has.
 \item After the dealer's turn is over the user's hand and the dealer's hand are compared. The hand with the closest point value to 21 is the winner.
-\item After the game is over, the user may enter another ante bet or exit to the main menu.
+\item After the game is over, the user may enter another bet or exit to the main menu.
 \end{enumerate}
 
-\subsubsection{Use Case 4: Play Three-Card Poker}
-See Figure \ref{fig:three-card}
-\begin{enumerate}
-\item User places an ante bet and optionally a pair plus bet.
-\item User and dealer are dealt three cards.
-\item User is shown two options: Play and Fold.
-\item If the user chooses the Play option, the user will make a bet that has the same value as the ante bet. After this, the user's turn will be over.
-\item If the user chooses the Fold option, the user will cede their hand to the dealer and lose automatically.
-\item After the user's turn is over, the dealer's turn begins. The dealer will reveal their cards and compare its hand with the user's.
-\item If the dealer's hand is not better than Queen high or the user's hand is better, the user wins. Otherwise, if the dealer has the better hand, the dealer wins.
-\item After the game is over, the user may enter another ante bet/pair plus bet or exit to the main menu.
-\end{enumerate}
 
-\subsubsection{Use Case 5: Play Roulette}
-See Figure \ref{fig:roulette}
-\begin{enumerate}
-\item User places a bet of their choice on any valid space on the board.
-\item Once the user is done betting, the user may click the ``Spin" button to spin the wheel.
-\item Once the ball in the roulette wheel rests in a slot, that slot determines what values win.
-\item The user is paid out according to what bet they made and where the ball landed.
-\item The user may choose to place another bet or exit to the main menu once the payout - or lack thereof - is done.
-\end{enumerate}
-
-\subsubsection{Use Case 6: Watch a Tutorial}
-
-\begin{enumerate}
-\item In the main menu, the user may click the button labeled ``Watch a Tutorial."
-\item Once in the tutorial screen, the user may select any of the tutorials associated with the three games in the app.
-\item Once the user clicks on a tutorial, they will be shown a video that teaches the user how to play the game.
-\item Once the user is done watching the tutorial, they may go back to the tutorials screen.
-\item From the tutorials screen, the user may choose to watch another tutorial or exit to the main menu.
-\end{enumerate}
-
-\subsubsection{Use Case 7: Navigate the Main Menu}
+\subsubsection{Use Case 4: Navigate the Main Menu}
 See Figure \ref{fig:main}
 \begin{enumerate}
 \item The user can click the ``Blackjack" button to go to the blackjack game screen.
-\item The user can click the ``Three-Card Poker" button to go to the three-card poker game screen.
-\item The user can click the ``Roulette" button to go to the roulette game screen.
 \item The user can click the ``Log Out" button to log out of their account and go back to the log in/sign up screen.
 \item The user can click the ``X" button at the top right corner of the screen to exit the program.
 \end{enumerate}
 
-\subsubsection{Use Case 8: Exit the Program}
+\subsubsection{Use Case 5: Exit the Program}
 See Figure \ref{fig:main}
 \begin{enumerate}
 \item The user can click the ``X" button at the top right corner of the main menu screen to exit the program.
@@ -374,6 +334,7 @@ See Figure \ref{fig:main}
 \newpage
 
 \section{Timeline}
+\noindent
 This section describes the timeline of our project.\\
 \newline
 8/27 - Finding partners.\\
@@ -392,25 +353,52 @@ This section describes the timeline of our project.\\
 11/25 - Begin work on the presentation and work on stretch goals such as the tutorials.\\
 12/2 - Demo the project. The project should be finished by this point.\\
 
-\section{Project Structure \& UML Outline}
+\section{Project Structure}
+\noindent
+This section covers the general structure of our app. We designed our project's structure to be flexible and expandable. We made our project modular by using pages, which can be swapped in and out as needed. This means new pages can be added and removed very easily, and one page does not necessarily depend on another. Another way we made our project modular is that some of the classes we used in the Blackjack\_Page can be used in another card game. These classes are the CardFactory class, the card struct, and the CardType enum. All of these classes can be applied to a different card game.
+
+\subsection{UML Outline}
+\noindent
+This section provides a UML outline of the project (see Figure \ref{fig:outline1} and Figure \ref{fig:outline2}). The outline was too big for one picture, so we had to separate it into two parts.\\
+\newline
+The project's structure hinges on a MainWindow object. The window has an object called a Frame that holds the page the user is currently on. At launch, the frame contains the log in/sign up page. To navigate between pages, we simply set the frame's content to a new instance of the page we want to navigate to. For each of the following pages, a reference to this frame is passed.\\
+\newline
+The log in/sign up page connects to the MS Access database through OleDb to log a user in or create an account for them. This page has two main methods: LoginSubmit\_Click and SignUpSubmit\_Click. As their names imply, these methods handle log ins and sign ups respectively.  LoginSubmit\_Click hashes whatever the user entered into the username and password fields on the page and compares them to every account in the database. If a match is found, then the user is logged in with that account. If not, the user is prompted to try again. SignUpSubmit\_Click
+checks the validity of the username and password the user submitted and creates a new account in the database for the user if they are valid.\\
+\newline
+The main menu page serves as a hub for navigation to other pages. Currently you can only navigate to the blackjack page and log out, but there is room for expansion when we get to that point. The two methods of this class, Black\_Jack\_Button\_Click and log\_out\_btn\_Click serve this purpose. They siimply navigate the user to the appropriate page.\\
+\newline
+The bet page does exactly what it implies: it allows the user to place a bet before they get into the game. Whenever the user enters a bet, the an event is raised that calls bet\_input\_TextChanged. This method validates the bet the user typed into the textbox. If the bet is valid, the user may click the submit button and navigate to their chosen game. The functionality for this is handled by submit\_btn\_Click.\\
+\newline
+The blackjack page is where the blackjack game is played. This class has several methods.There are four methods that represent actions the user can take in the game. These actions are hit, stand, double down, and split. There are four buttons that handle the logic behind these actions. Double down and split are only available on the player's first turn after they are dealt their starting hand. There are five methods in this class that deal with the functionality of the game. The first is checkHand, which checks the state of the given hand and returns that state as a string. So if the user has a blackjack, it will return ``blackjack." It will return the point value of the hand if the hand has no special state. A similar type of method is the insertCard method. This method simply adds a card to the given hand. The next method is Deal. This method initializes the game by dealing two random cards to the player and dealer. This method also handles blackjacks when needed. When the player clicks the stand button, dealerPlay is called. This method handles the logic behind the dealer's turn. This is made easy by the fact that the dealer must follow certain rules. The final functionality method is the play\_btn\_Click method. This method reveals the page content and calls Deal, which initializes the game. The last method in this class is the exit\_btn\_Click method, which simply closes the application.\\
+\newline
+Inside of the blackjack page class are three other classes: CardFactory, a card struct, and the CardType enum. The card struct defines what a card is. It contains three primitive values: ``value", ``suit", and ``face." ``value" is the amount of points a card is worth. ``suit" is the suit of the card (e.g. hearts). ``face" is what is displayed on the card (e.g. `K' for a King). CardType defines every card in a standard deck of cards (52 cards in total). CardFactory is an implementation of the Factory Method design pattern. Its role is to create a card object given a CardType.
 
 \begin{figure}[h]
-\caption{UML Outline}
-\includegraphics[scale=0.4]{GameDesign}
-\label{fig:outline}
+\caption{UML Outline: The Login/Sign-up Page, Main Menu Page, and MainWindow}
+\centering
+\includegraphics[scale=0.5]{first_half}
+\label{fig:outline1}
 \centering
 \end{figure}
 
-\noindent
-This section covers the overall project structure and provides a UML outline of the project (see Figure \ref{fig:outline}).\\
-\newline
-The project's structure hinges on a NavigationWindow object. A NavigationWindow allows easy navigation between pages in a WPF app. Initially, our project will contain five pages, but more could be added depending on how much time we have left by December 2. The initial five pages are named Login/Sign-Up, Roulette, Main Menu, Blackjack, and Three-Card Poker. Each page will contain Label and Button objects. The game pages will also contain their respective game classes.\\
-\newline
-Each game class contains the GetBalance and UpdateBalance methods and depends on a card struct. As the names imply, these methods get and modify the user's balance in the database. The card struct defines the three attributes of a card: value, suit, and display (or face). Roulette has its own unique game class called RouletteGame. This class has two unique methods: Spin and PlaceBet. The Spin method will play an animation of the roulette wheel spinning and determine whether the user wins or loses. PlaceBet determines what bet the user made for which slot on the board and calls UpdateBalance accordingly.\\
-\newline
-The Blackjack page contains the BlackjackGame class, which inherits from an abstract CardGame class like the Three-Card class. The CardGame class contains two unique methods: Deal and ChangeWinState. Deal simply deals out cards to the player and dealer. ChangeWinState updates the win state depending on if the player wins or loses. The BlackjackGame class has several unique methods: Hit, Stand, DoubleDown, Split, Bust, and Blackjack. Hit, Stand, DoubleDown, and Split are all actions that the user can take on their turn. Bust is called if either the player or dealer has a point value of over 21. Blackjack is called if either the player or dealer has a point value of 21 on the first turn.\\
-\newline
-Finally, the Three-Card class also has several unique methods: AnteBet, PairPlusBet, Fold, PlayHand, DealerRevealHand, and CompareHands. AnteBet, PairPlusBet, Fold, and PlayHand are all actions that the user can take on their turn. DealerRevealHand is called after the user is finished with their turn, and reveals the dealer's hand to the user. CompareHands is called after the dealer reveals their hand, and determines which hand is better: the user's or the dealer's.
+\begin{figure}[h]
+\caption{UML Outline: The Blackjack Page and Bet Page}
+\centering
+\includegraphics[scale=0.4]{second_half}
+\label{fig:outline2}
+\centering
+\end{figure}
 
+
+
+\subsection{Design Patterns Used}
+We used the Factory creational pattern and the Façade structural pattern for this project. We used the Factory Method to create objects that represent cards in our game. We chose to use this pattern because we needed a method of generating many different variations of the same object, and the Factory Method does that well. We used Façade to make playing the game much easier for the user. All the user needs to do  to control the game's subsystems is click some buttons.
+
+\section{Results}
+Looking back on the project, we managed to create a functional app with the limited time we had. We were forced to completely abandon most of our original plans for the structure of the project. As we developed the app, we discovered that our structure would definitely not work, so we had to quickly adapt to the changes in the structure. There is definitely room for improvement and expansion in the app, which is described in the Future Work section. As for our accomplishments, firstly we created a functional, albeit simple, user authentitication system using a Microsoft Access database. Second, we implemented user balances in the database. Finally, we created a functional blackjack game. Given more time, we could make many more accomplishments.
+
+\section{Future Work}
+In the future, we would like to expand the scope of our app to include the other games we originally planned to include: three-card poker and roulette. Another game we could potentially implement is  Texas Hold'em style poker game that can be played over the internet. Unfortunatley, due to time constraints we were only able to implement blackjack into the app. Finally, we would like to implement a tutorial page that contains tutorials for each game. 
 % that's all folks
 \end{document}
