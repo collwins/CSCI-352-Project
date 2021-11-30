@@ -156,11 +156,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\BACK_ARROW.png" />
+    <Resource Include="Images\Main_Menu.png" />
     <Resource Include="BACK_ARROW.png" />
+    <Resource Include="Main_Menu.png" />
+    <Resource Include="Images\BlackJack.png" />
+    <Resource Include="BlackJack.png" />
     <Content Include="projectDB.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="RED X.png" />
+    <Resource Include="Images\RED X.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

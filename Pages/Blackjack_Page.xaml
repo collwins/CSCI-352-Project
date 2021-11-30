@@ -4,20 +4,23 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Main_Menu"
-      mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Blackjack_Page">
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="Blackjack_Page" Height="461">
 
     <Grid Background="White">
-        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" />
-        <Button Content="X" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Width="62" BorderBrush="Black" Height="39"></Button>
-        <Button x:Name="hit_btn" Content="HIT" HorizontalAlignment="Left" Margin="46,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2" Click="hit_btn_Click"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" >
+            <Frame.Background>
+                <ImageBrush ImageSource="BlackJack.png"/>
+            </Frame.Background>
+        </Frame>
+        <Button Content="X" HorizontalAlignment="Left" Margin="22,32,0,0" VerticalAlignment="Top" Width="62" BorderBrush="Black" Height="39"></Button>
+        <Button x:Name="hit_btn" Content="HIT" HorizontalAlignment="Left" Margin="46,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2" Click="hit_btn_Click" RenderTransformOrigin="0.516,0.018"/>
         <Button Content="DOUBLE&#xD;&#xA;DOWN" HorizontalAlignment="Left" Margin="154,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="20" FontWeight="Bold" BorderThickness="2"/>
         <Button Content="STAND" HorizontalAlignment="Left" Margin="265,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>
         <Button Content="SPLIT" HorizontalAlignment="Left" Margin="377,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2"/>
         <Label Content="DEALER'S HAND" HorizontalAlignment="Left" Margin="46,105,0,0" VerticalAlignment="Top" Width="129" FontWeight="Bold" FontSize="14"/>
         <Label Content="YOUR HAND" HorizontalAlignment="Left" Margin="46,325,0,0" VerticalAlignment="Top" Width="129" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="bet_label" Content="BET: $" HorizontalAlignment="Left" Margin="496,195,0,0" VerticalAlignment="Top" Width="277" FontWeight="Bold" FontSize="24" Height="57" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
-        <Label x:Name="balance_label" Content="BALANCE: $" HorizontalAlignment="Left" Margin="550,32,0,0" VerticalAlignment="Top" Width="223" FontWeight="Bold" FontSize="18" Height="40" Grid.IsSharedSizeScope="True" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
+        <Label x:Name="bet_label" Content="BET: $" HorizontalAlignment="Left" Margin="496,195,0,0" VerticalAlignment="Top" Width="277" FontWeight="Bold" FontSize="24" Height="57" Grid.IsSharedSizeScope="True" Background="White" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
+        <Label x:Name="balance_label" Content="BALANCE: $" HorizontalAlignment="Left" Margin="550,32,0,0" VerticalAlignment="Top" Width="223" FontWeight="Bold" FontSize="18" Height="40" Grid.IsSharedSizeScope="True" Background="White" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"/>
     </Grid>
 </Page>

@@ -9,7 +9,11 @@
       Title="MainMenu_Page">
 
     <Grid Background="White" Width="800" Height="450">
-        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden">
+            <Frame.Background>
+                <ImageBrush ImageSource="Images/Main_Menu.png"/>
+            </Frame.Background>
+        </Frame>
         <Label Content="GambleMania" HorizontalAlignment="Center" Margin="234,69,229,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="50" Width="337"/>
         <Button x:Name="log_out_btn" Content="LOG OUT
                 " HorizontalAlignment="Left" Margin="22,18,0,0" VerticalAlignment="Top" Width="86" BorderBrush="Black" Foreground="Black" Background="White" FontWeight="Bold" Height="33" FontSize="18" Click="log_out_btn_Click"/>

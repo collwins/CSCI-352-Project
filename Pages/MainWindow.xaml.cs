@@ -33,5 +33,10 @@ namespace Main_Menu
         {
             Main.Content = new Log_in_page(Main);
         }
+
+        private void Main_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }
