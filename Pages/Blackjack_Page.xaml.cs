@@ -38,6 +38,7 @@ namespace Main_Menu
         bool split;
         bool splitBlackjack;
         bool splitBust;
+        Rectangle firstDealerCard;
    
         public Blackjack_Page(Frame parentFrame, int uid, int balance, int bet)
         {
@@ -195,32 +196,36 @@ namespace Main_Menu
             Random rand = new Random();
             int card1 = rand.Next(0, 51);
             int card2 = rand.Next(0, 51);
-            while(card1 == card2) //ensures both cards are not the same
-            {
-                card2 = rand.Next(0, 51);
-            }
+            
             CardType type = (CardType)card1;
-            playerHand.Insert(0, factory.getCard(type));
+            card playerCard1 = factory.getCard(type);
+            playerHand.Insert(0, playerCard1);
+            displayCard(playerCard1, playerHand);
+
             type = (CardType)card2;
-            playerHand.Insert(1, factory.getCard(type));
+            card playerCard2 = factory.getCard(type);
+            playerHand.Insert(1, playerCard2);
+            displayCard(playerCard2, playerHand);
 
             //generate the dealer's starting hand
             card1 = rand.Next(0, 51);
             card2 = rand.Next(0, 51);
-            while (card1 == card2) //ensures both cards are not the same
-            {
-                card2 = rand.Next(0, 51);
-            }
+           
             type = (CardType)card1;
-            dealerHand.Insert(0, factory.getCard(type));
-            type = (CardType)card2;
-            dealerHand.Insert(1, factory.getCard(type));
+            card dealerCard1 = factory.getCard(type);
+            dealerHand.Insert(0, dealerCard1);
+            displayCard(dealerCard1, dealerHand);
 
+            type = (CardType)card2;
+            card dealerCard2 = factory.getCard(type);
+            dealerHand.Insert(1, dealerCard2);
+            displayCard(dealerCard2, dealerHand);
+           
             string dealerCheck = checkHand(dealerHand);
             string playerCheck = checkHand(playerHand);
 
             player_points_display.Content = playerPoints.ToString();
-            dealer_points_display.Content = dealerPoints.ToString();
+            dealer_points_display.Content = dealerHand[1].Value.ToString();
 
             if (dealerCheck == "blackjack" && playerCheck == "blackjack")
             {
@@ -256,7 +261,9 @@ namespace Main_Menu
             Random rand = new Random();
             int card = rand.Next(0, 51);
             CardType type = (CardType)card;
-            hand.Add(factory.getCard(type));
+            card newCard = factory.getCard(type);
+            hand.Add(newCard);
+            displayCard(newCard, hand);
         }
 
         //Factory method for creating card objects.
@@ -493,6 +500,7 @@ namespace Main_Menu
             stand_btn.IsEnabled = false;
             if (double_btn.IsEnabled) double_btn.IsEnabled = false;
             if (split_btn.IsEnabled) split_btn.IsEnabled = false;
+            revealDealerCard();
             while (dealerPoints < 17)
             {
                 insertCard(dealerHand);
@@ -601,17 +609,64 @@ namespace Main_Menu
 
         }
 
+        private void revealDealerCard()
+        {
+            int dealerCardIndex = grid.Children.IndexOf(firstDealerCard);
+            grid.Children.Remove(firstDealerCard);
+            Rectangle cardBase = new Rectangle();
+            cardBase.Height = 117;
+            cardBase.Width = 100;
+            cardBase.HorizontalAlignment = HorizontalAlignment.Left;
+            cardBase.VerticalAlignment = VerticalAlignment.Top;
+            string firstLetterofSuit = dealerHand[0].Suit.Substring(0, 1).ToUpper();
+            cardBase.Margin = new Thickness(405, 40, 0, 0);
+
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            BitmapImage image = new BitmapImage(new Uri($"{projectDirectory}/Pages/Images/DECK/{firstLetterofSuit}{dealerHand[0].Face}.png", UriKind.Relative));
+            cardBase.Fill = new ImageBrush(image);
+            grid.Children.Insert(dealerCardIndex, cardBase);
+        }
+
         //displays a card to the screen
-        private void displayCard(card c)
+        private void displayCard(card c, List<card> hand)
         {
             Rectangle cardBase = new Rectangle();
             cardBase.Height = 117;
             cardBase.Width = 100;
-            cardBase.Margin = new Thickness(125, 316, 0, 0);
             cardBase.HorizontalAlignment = HorizontalAlignment.Left;
             cardBase.VerticalAlignment = VerticalAlignment.Top;
+            string firstLetterofSuit = c.Suit.Substring(0, 1).ToUpper();
+
+
+
+
+            if (hand == playerHand)
+            {
+                cardBase.Margin = new Thickness(125 + (hand.Count * 20 + 10), 316, 0, 0);
+            }
+
+            else if (hand == dealerHand)
+            {
+                cardBase.Margin = new Thickness(435 - (hand.Count * 20 + 10), 40, 0, 0);
+            }
+
+            else
+            {
+                cardBase.Margin = new Thickness(673 - (hand.Count * 20 + 10), 323, 0, 0);
+            }
+            
+            
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            BitmapImage image = new BitmapImage(new Uri($"{projectDirectory}/Pages/Images/Back_Cover.png", UriKind.Relative));
+            BitmapImage image;
+            if (hand == dealerHand && dealerHand.Count == 1) //dealer's first card
+            {
+                firstDealerCard = cardBase;
+                image = new BitmapImage(new Uri($"{projectDirectory}/Pages/Images/DECK/Back_Cover.png", UriKind.Relative));
+            }
+            else
+            {
+                image = new BitmapImage(new Uri($"{projectDirectory}/Pages/Images/DECK/{firstLetterofSuit}{c.Face}.png", UriKind.Relative));
+            }
             cardBase.Fill = new ImageBrush(image);
             grid.Children.Add(cardBase);
         }
@@ -645,7 +700,6 @@ namespace Main_Menu
             else
             {
                 insertCard(playerHand);
-                displayCard(playerHand[0]);
                 //display new card in player's hand
                 string check = checkHand(playerHand);
                 if (check == "21")
@@ -745,8 +799,10 @@ namespace Main_Menu
             betDoubled = true;
             bet_label.Content = $"BET: ${bet}";
             splitHand.Insert(0, playerHand[1]);
+            displayCard(playerHand[1], splitHand);
             playerHand.RemoveAt(1);
             insertCard(splitHand);
+            Thread.Sleep(5);
             insertCard(playerHand);
             split = true;
             split_hand_arrow.Visibility = 0;
