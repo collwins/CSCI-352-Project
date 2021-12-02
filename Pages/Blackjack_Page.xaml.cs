@@ -34,6 +34,9 @@ namespace Main_Menu
         int dealerPoints;
         int splitPoints;
         bool betDoubled; //may remove later
+        bool split;
+        bool splitBlackjack;
+        bool splitBust;
    
         public Blackjack_Page(Frame parentFrame, int uid, int balance, int bet)
         {
@@ -48,6 +51,9 @@ namespace Main_Menu
             dealerPoints = 0;
             splitPoints = 0;
             betDoubled = false;
+            split = false;
+            splitBust = false;
+            splitBlackjack = false;
             InitializeComponent();
             balance_label.Content = $"BALANCE: ${this.balance}";
             bet_label.Content = $"BET: ${this.bet}";
@@ -493,29 +499,103 @@ namespace Main_Menu
                 //display card being added to dealer's hand
             }
             dealer_points_display.Content = dealerPoints.ToString();
+
             if (dealerPoints > 21)
             {
-                MessageBox.Show("Dealer bust! You win!");
-                if (betDoubled) parentFrame.Content = new Bet_Page(parentFrame, uid, balance - (bet / 2));
-                else parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                if (player_points_display.Content.ToString().Contains("/") && splitBust) //split hand bust and dealer bust, effectively a push
+                {
+                    MessageBox.Show("Dealer bust! Your main hand wins!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
+                }
+                else
+                {
+                    MessageBox.Show("Dealer bust! You win!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet * 2));
+                }
             }
-            else if (dealerPoints > playerPoints)
+
+            else if (player_points_display.Content.ToString().Contains("/")) //if a split happened
             {
-                MessageBox.Show("Dealer wins!");
-                if(betDoubled) parentFrame.Content = new Bet_Page(parentFrame, uid, balance - (bet / 2));
-                else parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                /***player loses main hand***/
+                if (dealerPoints > playerPoints && dealerPoints > splitPoints) //split hand loses
+                {
+                    MessageBox.Show("Dealer wins!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance - (bet / 2));
+                }
+
+                else if (dealerPoints > playerPoints && dealerPoints < splitPoints)//split hand wins
+                {
+                    MessageBox.Show("Your main hand loses, but your split hand wins!");
+                    if (splitBlackjack) parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet / 2) + (int)Math.Floor((bet / 2) * 1.5));
+                    else parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
+                }
+
+                else if (dealerPoints > playerPoints && dealerPoints == splitPoints) //split hand pushes
+                {
+                    MessageBox.Show("Your main hand loses, but your split hand pushes!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                }
+                /***player pushes main hand***/
+                else if (dealerPoints == playerPoints && dealerPoints == splitPoints) //split hand pushes
+                {
+                    //update balance in db
+                    MessageBox.Show("Push! Your bet has been returned.");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet / 2));
+                }
+
+                else if (dealerPoints == playerPoints && dealerPoints < splitPoints) //split hand wins
+                {
+                    MessageBox.Show("Your main hand pushes, but your split hand wins!");
+                    if (splitBlackjack) parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet + (int)Math.Floor((bet / 2) * 1.5));
+                    else parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
+                }
+
+                else if (dealerPoints == playerPoints && dealerPoints > splitPoints) //split hand loses
+                {
+                    MessageBox.Show("Your main hand pushes, and your split hand loses!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance - (bet / 2));
+                }
+                /***player wins main hand***/
+                else if (dealerPoints < playerPoints && dealerPoints == splitPoints) //split hand pushes
+                {
+                    MessageBox.Show("Your main hand wins, and your split hand pushes!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
+                }
+                else if (dealerPoints < playerPoints && dealerPoints > splitPoints) //split hand loses
+                {
+                    MessageBox.Show("Your main hand wins, but your split hand loses!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet / 2));
+                }
+                else //split hand wins
+                {
+                    //update balance in db
+                    MessageBox.Show("You win!");
+                    if (splitBlackjack) parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet * 2) + (int)Math.Floor((bet / 2) * 1.5));
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet * 2));
+                }
             }
-            else if (dealerPoints == playerPoints)
+
+            else //no split, dealer does not bust
             {
-                //update balance in db
-                MessageBox.Show("Push! Your bet has been returned.");
-                parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
-            }
-            else
-            {
-                //update balance in db
-                MessageBox.Show("You win!");
-                parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet * 2));
+                if (dealerPoints > playerPoints)
+                {
+                    MessageBox.Show("Dealer wins!");
+                    if (betDoubled) parentFrame.Content = new Bet_Page(parentFrame, uid, balance - (bet / 2));
+                    else parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                }
+
+                else if (dealerPoints == playerPoints)
+                {
+                    //update balance in db
+                    MessageBox.Show("Push! Your bet has been returned.");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + bet);
+                }
+                else
+                {
+                    //update balance in db
+                    MessageBox.Show("You win!");
+                    parentFrame.Content = new Bet_Page(parentFrame, uid, balance + (bet * 2));
+                }
             }
 
         }
@@ -524,22 +604,83 @@ namespace Main_Menu
         {
             if (double_btn.IsEnabled) double_btn.IsEnabled = false;
             if (split_btn.IsEnabled) split_btn.IsEnabled = false;
-            insertCard(playerHand);
-            //display new card in player's hand
-            string check = checkHand(playerHand);
-            if (check == "21")
+            if (split)
             {
-                player_points_display.Content = "21";
-                dealerPlay();
+                insertCard(splitHand);
+                //display new card in split hand
+                string check = checkHand(splitHand);
+                if (check == "21")
+                {
+                    player_points_display.Content = $"{playerPoints}/21";
+                    split = false;
+                }
+                else if (check == "bust")
+                {
+                    //update player's balance in db
+                    player_points_display.Content = $"{playerPoints}/{splitPoints}";
+                    MessageBox.Show("Bust! Your split hand lost!");
+                    split = false;
+                    splitBust = true;
+                    split_hand_arrow.Visibility = Visibility.Hidden;
+                    main_hand_arrow.Visibility = 0;
+                }
+                else player_points_display.Content = $"{playerPoints}/{splitPoints}";
             }
-            else if (check == "bust")
+            else
             {
-                //update player's balance in db
-                player_points_display.Content = playerPoints.ToString();
-                MessageBox.Show("Bust! You lose!");
-                parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                insertCard(playerHand);
+                //display new card in player's hand
+                string check = checkHand(playerHand);
+                if (check == "21")
+                {
+                    if (player_points_display.Content.ToString().Contains("/"))
+                    {
+                        player_points_display.Content = $"21/{splitPoints}";
+                        split_hand_arrow.Visibility = Visibility.Hidden;
+                        main_hand_arrow.Visibility = 0;
+                        dealerPlay();
+                    }
+                    else
+                    {
+                        player_points_display.Content = "21";
+                        dealerPlay();
+                    }
+                }
+                else if (check == "bust")
+                {
+                    //update player's balance in db
+                    if (player_points_display.Content.ToString().Contains("/"))
+                    {
+                        if (splitBust)
+                        {
+                            player_points_display.Content = $"{playerPoints}/{splitPoints}";
+                            MessageBox.Show("Bust! You lose!");
+                            parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                        }
+                        else
+                        {
+                            player_points_display.Content = $"{playerPoints}/{splitPoints}";
+                            dealerPlay();
+                        }
+                    }
+                    else
+                    {
+                        player_points_display.Content = $"{playerPoints}";
+                        MessageBox.Show("Bust! You lose!");
+                        parentFrame.Content = new Bet_Page(parentFrame, uid, balance);
+                    }
+
+                }
+                else
+                {
+                    if (player_points_display.Content.ToString().Contains("/"))
+                    {
+                        player_points_display.Content = $"{playerPoints}/{splitPoints}";
+                    }
+                    else player_points_display.Content = playerPoints.ToString();
+                }
             }
-            else player_points_display.Content = playerPoints.ToString();
+            
         }
 
 
@@ -568,7 +709,13 @@ namespace Main_Menu
 
         private void stand_btn_Click(object sender, RoutedEventArgs e)
         {
-            dealerPlay();
+            if (split)
+            {
+                split = false;
+                split_hand_arrow.Visibility = Visibility.Hidden;
+                main_hand_arrow.Visibility = 0;
+            }
+            else dealerPlay();
         }
 
         private void split_btn_Click(object sender, RoutedEventArgs e)
@@ -576,15 +723,38 @@ namespace Main_Menu
             //split the player's hand into two distinct hands in display
             //in other words, display splitHand and playerHand separately.
             split_btn.IsEnabled = false;
+            double_btn.IsEnabled = false;
             bet *= 2;
             betDoubled = true;
             bet_label.Content = $"BET: ${bet}";
-            splitHand[0] = playerHand[1];
-            splitHand.RemoveAt(1);
+            splitHand.Insert(0, playerHand[1]);
             playerHand.RemoveAt(1);
             insertCard(splitHand);
             insertCard(playerHand);
-            
+            split = true;
+            split_hand_arrow.Visibility = 0;
+
+            string check = checkHand(playerHand);
+            string splitCheck = checkHand(splitHand);
+            if (splitCheck == "blackjack" && check == "blackjack")
+            {
+                player_points_display.Content = $"21/21";
+                MessageBox.Show("You got blackjack on both hands!");
+                parentFrame.Content = new Bet_Page(parentFrame, uid, balance + ((bet * 2) + (int)Math.Floor(bet * 1.5)) * 2);
+            }
+            else if (splitCheck == "blackjack" && check != "blackjack")
+            {
+                player_points_display.Content = $"{playerPoints}/21";
+                split = false;
+                MessageBox.Show("You got blackjack on your split hand!");
+                splitBlackjack = true;
+                split_hand_arrow.Visibility = Visibility.Hidden;
+                main_hand_arrow.Visibility = 0;
+            }
+            else
+            {
+                player_points_display.Content = $"{playerPoints}/{splitPoints}";
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -605,11 +775,13 @@ namespace Main_Menu
             player_rectangle.Visibility = Visibility.Hidden;
             dealer_rectangle.Visibility = Visibility.Hidden;
             bet_label.Visibility = Visibility.Hidden;
+            split_hand_arrow.Visibility = Visibility.Hidden;
+            main_hand_arrow.Visibility = Visibility.Hidden;
         }
 
         private void exit_btn_Click(object sender, RoutedEventArgs e)
         {
-            System.Environment.Exit(0);
+            Environment.Exit(0);
         }
 
         private void play_btn_Click(object sender, RoutedEventArgs e)

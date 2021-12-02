@@ -27,5 +27,31 @@
         <Label x:Name="dealer_points_display" Content="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="22,115,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="53" Width="79" FontSize="25"/>
         <Label x:Name="blackjack_label" Content="" HorizontalAlignment="Left" Margin="377,343,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Button x:Name="play_btn" Content="Click to Play" HorizontalAlignment="Left" Margin="308,181,0,0" VerticalAlignment="Top" Width="160" Height="71" FontWeight="Bold" FontSize="20" Click="play_btn_Click"/>
+        <Rectangle x:Name="split_hand_arrow" HorizontalAlignment="Left" Height="29" Margin="633,262,0,0" Stroke="Black" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="BACK_ARROW.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="main_hand_arrow" HorizontalAlignment="Left" Height="29" Margin="411,261,0,0" Stroke="Black" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="BACK_ARROW.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
     </Grid>
 </Page>
