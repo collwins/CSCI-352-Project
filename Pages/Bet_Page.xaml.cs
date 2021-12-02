@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.OleDb;
 
 namespace Main_Menu
 {
@@ -24,12 +25,15 @@ namespace Main_Menu
         int uid;
         int balance;
         bool validBet;
+        OleDbConnection cn;
+        string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\projectDB.accdb";
         public Bet_Page(Frame parentFrame, int uid, int balance)
         {
             this.uid = uid;
             this.parentFrame = parentFrame;
             this.balance = balance;
             validBet = false;
+            cn = new OleDbConnection(connstring);
             InitializeComponent();
             balance_label.Content = $"${balance}";
             balance_after_bet_label.Content = $"${balance}";
@@ -41,7 +45,6 @@ namespace Main_Menu
             {
                 balance -= Convert.ToInt32(bet_input.Text);
                 parentFrame.Content = new Blackjack_Page(parentFrame, uid, balance, Convert.ToInt32(bet_input.Text));
-                //db stuff will be handled in the blackjack page
                 //if the user loses, simply load the bet page again.
             }
         }
@@ -71,6 +74,19 @@ namespace Main_Menu
                 submit_error_label.Content = "";
             }
             //note: this also implictly checks for negative values. '-' is not a digit and violates the first check.
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "UPDATE Users SET[Balance] = (?) WHERE[UserID] = (?);";
+            cmd.Parameters.AddWithValue("@balance", balance.ToString());
+            cmd.Parameters.AddWithValue("@id", uid.ToString());
+            cmd.Connection = cn;
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
         }
     }
 }
