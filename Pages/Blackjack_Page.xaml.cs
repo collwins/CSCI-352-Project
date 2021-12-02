@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -600,6 +601,21 @@ namespace Main_Menu
 
         }
 
+        //displays a card to the screen
+        private void displayCard(card c)
+        {
+            Rectangle cardBase = new Rectangle();
+            cardBase.Height = 117;
+            cardBase.Width = 100;
+            cardBase.Margin = new Thickness(125, 316, 0, 0);
+            cardBase.HorizontalAlignment = HorizontalAlignment.Left;
+            cardBase.VerticalAlignment = VerticalAlignment.Top;
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            BitmapImage image = new BitmapImage(new Uri($"{projectDirectory}/Pages/Images/Back_Cover.png", UriKind.Relative));
+            cardBase.Fill = new ImageBrush(image);
+            grid.Children.Add(cardBase);
+        }
+
         private void hit_btn_Click(object sender, RoutedEventArgs e)
         {
             if (double_btn.IsEnabled) double_btn.IsEnabled = false;
@@ -629,6 +645,7 @@ namespace Main_Menu
             else
             {
                 insertCard(playerHand);
+                displayCard(playerHand[0]);
                 //display new card in player's hand
                 string check = checkHand(playerHand);
                 if (check == "21")
@@ -758,7 +775,7 @@ namespace Main_Menu
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
+        { 
             hit_btn.IsEnabled = false;
             hit_btn.Visibility = Visibility.Hidden;
             stand_btn.IsEnabled = false;
