@@ -158,12 +158,9 @@
   <ItemGroup>
     <Resource Include="Images\BACK_ARROW.png" />
     <Resource Include="Images\Main_Menu.png" />
-    <Resource Include="BACK_ARROW.png" />
-    <Resource Include="Main_Menu.png" />
     <Resource Include="Images\BlackJack.png" />
     <Resource Include="BlackJack.png" />
     <Resource Include="Images\Back_Cover.png" />
-    <Resource Include="Back_Cover.png" />
     <Content Include="projectDB.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

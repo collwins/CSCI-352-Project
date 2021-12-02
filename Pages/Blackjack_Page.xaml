@@ -18,7 +18,6 @@
         </Frame>
         <Rectangle x:Name="player_rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="53" Margin="22,321,0,0" Stroke="Black" VerticalAlignment="Top" Width="79"/>
         <Rectangle x:Name="dealer_rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="53" Margin="22,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="79"/>
-        <Frame x:Name="PageContent" NavigationUIVisibility="Hidden" />
         <Button x:Name="exit_btn" Content="X" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Width="62" BorderBrush="Black" Height="39" Click="exit_btn_Click"/>
         <Button x:Name="hit_btn" Content="HIT" HorizontalAlignment="Left" Margin="46,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="24" FontWeight="Bold" BorderThickness="2" Click="hit_btn_Click"/>
         <Button x:Name="double_btn" Content="DOUBLE&#xA;DOWN" HorizontalAlignment="Left" Margin="154,195,0,0" VerticalAlignment="Top" Width="91" BorderBrush="Black" Background="White" Height="57" FontSize="20" FontWeight="Bold" BorderThickness="2" Click="double_btn_Click"/>
@@ -42,7 +41,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
             <Rectangle.Fill>
-                <ImageBrush ImageSource="BACK_ARROW.png"/>
+                <ImageBrush ImageSource="Images/BACK_ARROW.png"/>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle x:Name="main_hand_arrow" HorizontalAlignment="Left" Height="29" Margin="411,261,0,0" Stroke="Black" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5">
@@ -55,11 +54,15 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
             <Rectangle.Fill>
-                <ImageBrush ImageSource="BACK_ARROW.png"/>
+                <ImageBrush ImageSource="Images/BACK_ARROW.png"/>
             </Rectangle.Fill>
         </Rectangle>
+        <!--
         <Rectangle x:Name="Deck_Rectangle" HorizontalAlignment="Left" Height="140" Margin="27,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="110">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Back_Cover.png"/>
+                <ImageBrush ImageSource="/Images/Back_Cover.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        -->
     </Grid>
 </Page>
