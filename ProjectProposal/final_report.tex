@@ -141,7 +141,7 @@
 
 \begin{document}
 
-\title{GambleMania\\ for UTM CSCI 352}
+\title{GambleMania}
 %
 %
 
@@ -152,7 +152,7 @@
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-This app allows the user to play three standard casino games: blackjack, three-card poker, and roulette. The player will play against an AI dealer in the blackjack and three-card poker games. In roulette, the program will randomly generate values from the roulette wheel. None of the games in our app will not require any real money to play; all money is virtual and has no monetary value. Users will have their own accounts which will contain login information and the account's balance. This information will be managed with a database.
+GambleMania allows the user to play the popular casino game of blackjack against a computer-controlled dealer. Blackjack uses a custom design for the deck of cards the game uses. GambleMania does not require any real money to play; all money is virtual and has no real monetary value. Users will have their own accounts which will contain login information and the account's balance. This information will be managed with a database.
 \end{abstract}
 
 }
@@ -172,35 +172,50 @@ This app allows the user to play three standard casino games: blackjack, three-c
 \section{Introduction}
 
 
-Our project is called GambleMania. It will allow you to play the typical casino games of blackjack, three-card poker, and roulette. The player's balance will be saved in a database along with their login information. We decided to do this project because we thought it would be fun and require a good bit of research and work to finish. As for why we chose the games previously mentioned, it's because they are all fairly simple games to learn and play (probably by design). Because they are fairly simple, they should be relatively easy to program. Our target audience is adults 18 years old and older because the games featured in out app are all typically played in casinos. We expect our audience to use our app simply for fun or to practice blackjack or three-card poker. We did not include roulette in this list because roulette is based solely on randomness, so you can't really practice it.
+Our project is called GambleMania. It allows you to play the blackjack casino game. The player's balance will be saved in a database along with their login information. We decided to do this project because we thought it would be fun and require a good bit of research and work to finish. As for why we chose blackjack as the game to implement, it's because blackjack is a fairly simple game to learn and play.\\
+\newline
+As blackjack is fairly simple, it is easier to program than more complex games like poker. Our target audience is adults 18 years old and older because blackjack is a game that is typically played in casinos. We expect our audience to use our app simply for fun or to practice blackjack.\\
 
 
 
 \subsection{Background}
-Minimally, we expect the user to know how to play blackjack, three-card poker, and roulette. However, we could implement a tutorial as a stretch goal to remove this requirement.
+Minimally, we expect the user to know how to play blackjack and be familiar with the terms used in blackjack. The goal of blackjack is to get the point value of your hand as close to 21 as possible without going over. The terms you should know are defined below.\\
+\newline
+\begin{itemize}
+\item{Ante - the amount of money you bet before you play the game.}
+\item{Blackjack - when your hand has a point value of 21.}
+\item{Bust - when your hand has a point value greater than 21.}
+\item{Push - when your hand and the dealer's hand have the same point value at the end of the dealer's turn.}
+\item{Hit - deal another card to your hand.}
+\item{Stand - end your turn.}
+\item{Double down - double your ante bet and be dealt one, and only one, card to your hand.}
+\item{Split - double your ante bet and split your hand into two hands. Both hands are dealt another card.}
+\end{itemize}
 
 \subsection{Impacts}
-Although our project is very small and limited, if distributed the project could possibly have a cultural impact by getting more people into the games of blackjack, three-card poker, and roulette. It could also potentially be used for data research and game theory by simulating thousands or millions of blackjack, three-card poker, and roulette games.
+Although our project is very small and limited, if distributed the project could possibly have a cultural impact by getting more people into blackjack.
 
 \subsection{Challenges}
-We foresee the most challenging part of this project as the way the AI dealer will work in the blackjack and three-card poker games. These games have certain rules that need to be checked. For example, in the blackjack game, the dealer must stand on 17. In three-card poker, the player's hand must be checked against the dealer's hand. We think these kinds of obstacles will be our biggest hurdles.
-
+Our biggest challenge was the logic behind blackjack. In blackjack, there are many conditions which you have to check for such as getting a blackjack or busting your hand. You have to check these conditions for both the user and the dealer, which further complicated the development of the game. This challenge was overcome by applying conditionals in places where they would only need to be checked once.\\
+\newline
+Before we began developing Gamblemania, we thought that programming the dealer's functions would be the most difficult challenge. However, this turned out to be almost trivial for blackjack because the dealer must play according to a strict guideline: hit until you get at least 17 or your hand is greater than the player's, then stand. This rule was handled by some simple conditionals and a loop.\\
+\newline
+Another challenge we faced was the ``split" functionality. Giving the user another hand doubles the amount of logic the program needs to run the game. By adding another hand, we now have to compare the user's hands seperately against the dealer's hand. This challenge has not been completely solved yet, as there are still some bugs with splitting. However, splitting works normally for the most part.
 
 \section{Scope}
-This project will be completed when we have implemented a navigable main menu and the games of blackjack, three-card poker, and roulette. The main menu should minimally allow the user to navigate between games by clicking a button (one for each game) and return to desktop by clicking an exit button. The user must be able to play an accurate game of blackjack with the rules of dealer stands on 17 and blackjack pays 3:2. The user must be able to play an accurate game of three-card poker. A fully functioning roulette table must be implemented. Finally, each of the 56 individual cards in a standard deck of playing cards must be designed.
-
-
-As mentioned earlier in this paper, there are a few stretch goals we can potentially meet should we be able to do so:\\
+Firstly, the user should be able to navigate between pages by clicking a button on the page they are currently on. Users should be able to create accounts and log into them. The main menu should minimally allow the user to navigate between pages by clicking a button and return to desktop by clicking an exit button. The user must be able to play a game of blackjack with the rules of dealer stands on 17 and blackjack pays 3:2. Finally, all of the cards that you would use in blackjack must be designed.
+\newline
+Below is the future work we could do to expand GambleMania:\\
 
 \begin{enumerate}
-\item Create a tutorial for each game for users who do not know how to play.
 \item Add more games to the app.
+\item Create a tutorial for each game for users who do not know how to play.
 \item Make the main menu and game environments look better.
-\item Create a Texas Hold'em style poker game that can be played over a network connection.
+\item Networked gameplay
 \end{enumerate}
 
 \subsection{Requirements}
-As mentioned in the Scope section, there are many basic requirements that need to be completed in order for this project to be done. There are also a few stretch goals that we could implement should we get done early. The basis of the basic requirements stems from the rules of play for each of the three basic games we will be implementing. There are also requirements that involve the UI design, some of which are simply required for a functional app and others are for a good-looking app. The non-functional requirements are based on how the user will interact with our app. These requirements are not necessarily required for the app to function, but are important for the users of our app.
+The basis of the base requirements stems from the rules of play for blackjack. There are also requirements that involve the UI design, some of which are simply required for a functional app and others are for a good-looking app. The non-functional requirements are based on how the user will interact with our app. These requirements are not necessarily required for the app to function, but are important for the users of our app.
 
 \subsubsection{Functional}
 \begin{itemize}
@@ -290,18 +305,18 @@ See Figure \ref{fig:main}
 \end{enumerate}
 
 \newpage
-\subsection{Interface ScreenShots}
+\subsection{Interface Screenshots}
 
 \begin{figure}[h]
 \caption{Login/sign-up GUI}
-\includegraphics[scale=0.4]{Sign_up}
-\label{fig:Login}
+\includegraphics[scale=0.7]{Sign_Up}
+\label{fig:login}
 \centering
 \end{figure}
 
 \begin{figure}[h]
 \caption{Main menu GUI}
-\includegraphics[scale=0.4]{Main_Menu}
+\includegraphics[scale=0.7]{Main_Menu}
 \label{fig:main}
 \centering
 \end{figure}
@@ -310,24 +325,8 @@ See Figure \ref{fig:main}
 
 \begin{figure}[h]
 \caption{Blackjack GUI}
-\includegraphics[scale=0.4]{Black_jack}
+\includegraphics[scale=0.7]{Black_jack}
 \label{fig:blackjack}
-\centering
-\end{figure}
-
-\newpage
-
-\begin{figure}[h]
-\caption{Three-card poker GUI}
-\includegraphics[scale=0.4]{Three}
-\label{fig:three-card}
-\centering
-\end{figure}
-
-\begin{figure}[h]
-\caption{Roulette GUI}
-\includegraphics[scale=0.4]{Roullete}
-\label{fig:roulette}
 \centering
 \end{figure}
 
@@ -335,7 +334,7 @@ See Figure \ref{fig:main}
 
 \section{Timeline}
 \noindent
-This section describes the timeline of our project.\\
+Below is the timeline of the project. This timeline is accurate up until 11/11. We were unfortunately delayed this week due to other events and could not work on the project. From then on, we were behind schedule and were not able to implement three-card poker and roulette as a result.\\
 \newline
 8/27 - Finding partners.\\
 9/2 - Formed a team.\\
@@ -364,39 +363,39 @@ This section provides a UML outline of the project (see Figure \ref{fig:outline1
 The project's structure hinges on a MainWindow object. The window has an object called a Frame that holds the page the user is currently on. At launch, the frame contains the log in/sign up page. To navigate between pages, we simply set the frame's content to a new instance of the page we want to navigate to. For each of the following pages, a reference to this frame is passed.\\
 \newline
 The log in/sign up page connects to the MS Access database through OleDb to log a user in or create an account for them. This page has two main methods: LoginSubmit\_Click and SignUpSubmit\_Click. As their names imply, these methods handle log ins and sign ups respectively.  LoginSubmit\_Click hashes whatever the user entered into the username and password fields on the page and compares them to every account in the database. If a match is found, then the user is logged in with that account. If not, the user is prompted to try again. SignUpSubmit\_Click
-checks the validity of the username and password the user submitted and creates a new account in the database for the user if they are valid.\\
+checks the validity of the username and password the user submitted and creates a new account in the database for the user if they are valid. ``Valid" in this case is when the password is at least 10 characters long and contains at least one uppercase letter, symbol, and number. The password must also match what the user entered in the ``Confirm password" text box. The username must not already be registered to another account.\\
 \newline
 The main menu page serves as a hub for navigation to other pages. Currently you can only navigate to the blackjack page and log out, but there is room for expansion when we get to that point. The two methods of this class, Black\_Jack\_Button\_Click and log\_out\_btn\_Click serve this purpose. They siimply navigate the user to the appropriate page.\\
 \newline
 The bet page does exactly what it implies: it allows the user to place a bet before they get into the game. Whenever the user enters a bet, the an event is raised that calls bet\_input\_TextChanged. This method validates the bet the user typed into the textbox. If the bet is valid, the user may click the submit button and navigate to their chosen game. The functionality for this is handled by submit\_btn\_Click.\\
 \newline
-The blackjack page is where the blackjack game is played. This class has several methods.There are four methods that represent actions the user can take in the game. These actions are hit, stand, double down, and split. There are four buttons that handle the logic behind these actions. Double down and split are only available on the player's first turn after they are dealt their starting hand. There are five methods in this class that deal with the functionality of the game. The first is checkHand, which checks the state of the given hand and returns that state as a string. So if the user has a blackjack, it will return ``blackjack." It will return the point value of the hand if the hand has no special state. A similar type of method is the insertCard method. This method simply adds a card to the given hand. The next method is Deal. This method initializes the game by dealing two random cards to the player and dealer. This method also handles blackjacks when needed. When the player clicks the stand button, dealerPlay is called. This method handles the logic behind the dealer's turn. This is made easy by the fact that the dealer must follow certain rules. The final functionality method is the play\_btn\_Click method. This method reveals the page content and calls Deal, which initializes the game. The last method in this class is the exit\_btn\_Click method, which simply closes the application.\\
+The blackjack page is where the blackjack game is played. This class has several methods. There are four methods that represent actions the user can take in the game. These actions are hit, stand, double down, and split. There are four buttons that handle the logic behind these actions. Double down and split are only available on the player's first turn after they are dealt their starting hand. There are five methods in this class that deal with the functionality of the game. The first is checkHand, which checks the state of the given hand and returns that state as a string. So if the user has a blackjack, it will return ``blackjack." It will return the point value of the hand if the hand has no special state. A similar type of method is the insertCard method. This method simply adds a card to the given hand. The next method is Deal. This method initializes the game by dealing two random cards to the player and dealer. This method also handles blackjacks when needed. When the player clicks the stand button, dealerPlay is called. This method handles the logic behind the dealer's turn. This is made easy by the fact that the dealer must follow certain rules. The final functionality method is the play\_btn\_Click method. This method reveals the page content and calls Deal, which initializes the game. The last method in this class is the exit\_btn\_Click method, which simply closes the application.\\
 \newline
 Inside of the blackjack page class are three other classes: CardFactory, a card struct, and the CardType enum. The card struct defines what a card is. It contains three primitive values: ``value", ``suit", and ``face." ``value" is the amount of points a card is worth. ``suit" is the suit of the card (e.g. hearts). ``face" is what is displayed on the card (e.g. `K' for a King). CardType defines every card in a standard deck of cards (52 cards in total). CardFactory is an implementation of the Factory Method design pattern. Its role is to create a card object given a CardType.
 
 \begin{figure}[h]
-\caption{UML Outline: The Login/Sign-up Page, Main Menu Page, and MainWindow}
+\caption{The Blackjack Page UML}
 \centering
-\includegraphics[scale=0.5]{first_half}
+\includegraphics[scale=0.45]{Blackjack_UML}
 \label{fig:outline1}
 \centering
 \end{figure}
 
 \begin{figure}[h]
-\caption{UML Outline: The Blackjack Page and Bet Page}
+\caption{UML Outline}
 \centering
-\includegraphics[scale=0.4]{second_half}
-\label{fig:outline2}
+\includegraphics[scale=0.33]{whole}
+\label{fig:outline1}
 \centering
 \end{figure}
 
 
 
 \subsection{Design Patterns Used}
-We used the Factory creational pattern and the Façade structural pattern for this project. We used the Factory Method to create objects that represent cards in our game. We chose to use this pattern because we needed a method of generating many different variations of the same object, and the Factory Method does that well. We used Façade to make playing the game much easier for the user. All the user needs to do  to control the game's subsystems is click some buttons.
+We used the Factory Method creational pattern and the Façade structural pattern for this project. We used the Factory Method to create objects that represent cards in our game. We chose to use this pattern because we needed a method of generating many different variations of the same object, and the Factory Method does that well. We used Façade to make playing the game much easier for the user. All the user needs to do  to control the game's subsystems is click some buttons.
 
 \section{Results}
-Looking back on the project, we managed to create a functional app with the limited time we had. We were forced to completely abandon most of our original plans for the structure of the project. As we developed the app, we discovered that our structure would definitely not work, so we had to quickly adapt to the changes in the structure. There is definitely room for improvement and expansion in the app, which is described in the Future Work section. As for our accomplishments, firstly we created a functional, albeit simple, user authentitication system using a Microsoft Access database. Second, we implemented user balances in the database. Finally, we created a functional blackjack game. Given more time, we could make many more accomplishments.
+Looking back on the project, we managed to create a functional app with the limited time we had. As we developed the app, we discovered that our structure would definitely not work, so we had to quickly adapt to the changes in the structure. For example, we had planned to use a NavigationWindow as our method of navigation, but we discovered that it did not support the UI elements we needed to implement. Although there was probably a way around this, we found Pages to be easier to use. There is definitely room for improvement and expansion in the app, which is described in the Future Work section. As for our accomplishments, firstly we created a functional, albeit simple, user authentitication system using a Microsoft Access database. Second, we implemented user balances in the database. Finally, we created a functional blackjack game. Given more time, we could make many more accomplishments.
 
 
 \section{Future Work}
